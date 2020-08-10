@@ -1,0 +1,7 @@
+//                                               Emacs make this -*- mode: C++; -*-
+// tidyCpp: wrapping parts of the C API of R
+
+#include <tidy/globals.h>
+#include <tidy/defines.h>
+#include <tidy/math.h>
+#include <tidy/shield.h>

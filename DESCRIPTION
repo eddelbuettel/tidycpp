@@ -1,0 +1,10 @@
+Package: tidyCpp
+Type: Package
+Title: Tidy C++ Header Definitions for the C API of R
+Version: 0.0.1
+Date: 2020-08-04
+Author: Dirk Eddelbuettel
+Maintainer: Dirk Eddelbuettel <edd@debian.org>
+Description: The C API of R is wrapped in a C++ namespace giving a tidier representation of the underlying data structures anf functions.
+Suggests: Rcpp
+License: GPL (>= 2)
