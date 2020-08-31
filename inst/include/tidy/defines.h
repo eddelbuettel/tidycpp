@@ -28,7 +28,7 @@
 namespace R {                   // we remain all tidied up in a namespace
 
     // maybe better an extern with global in src/init.c
-    #define Nil R_NilValue
+    //#define Nil R_NilValue
 
     inline SEXP coerceVectorLogical(SEXP x)   { return Rf_coerceVector(x, LGLSXP);  }
     inline SEXP coerceVectorInteger(SEXP x)   { return Rf_coerceVector(x, INTSXP);  }
@@ -97,6 +97,9 @@ namespace R {                   // we remain all tidied up in a namespace
     //inline SEXP createUserString(SEXP x)                { return mkChar(x); }
     //inline SEXP createStringVector(SEXP x)              { return mkChar(x); }
     //inline SEXP createFunctionCall(SEXP name, SEXP args) { return ::createFunctionCall(name, args); }
+
+
+    inline int asLogical(SEXP x)                  { return Rf_asLogical(x); }
 }
 
 #endif

@@ -26,6 +26,9 @@
 // include R headers, but set R_NO_REMAP and access everything via Rf_ prefixes
 #define R_NO_REMAP
 
+// also do not remap for the math function
+//#define R_NO_REMAP_RMATH
+
 // this was useful in the Rcpp context
 #define MAXELTSIZE 8192
 

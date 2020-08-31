@@ -3,5 +3,6 @@
 
 #include <tidy/globals.h>
 #include <tidy/defines.h>
+#include <tidy/internals.h>
 #include <tidy/math.h>
 #include <tidy/shield.h>
