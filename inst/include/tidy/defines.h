@@ -65,6 +65,8 @@ namespace R {                   // we remain all tidied up in a namespace
     inline SEXP*     ptrList(SEXP x)      { return VECTOR_PTR(x); }  // need USE_RINTERNALS
     inline Rbyte*    ptrRaw(SEXP x)       { return RAW(x);        }
 
+    inline const char*  ptrChar(SEXP x)   { return CHAR(x);       }
+
     inline void  setVectorElements(SEXP x, R_xlen_t i, SEXP val) { SET_VECTOR_ELT(x, i, val); }
 
     inline SEXP  getAttrib(SEXP x, SEXP what) { return(Rf_getAttrib(x, what));             }
@@ -99,7 +101,11 @@ namespace R {                   // we remain all tidied up in a namespace
     //inline SEXP createFunctionCall(SEXP name, SEXP args) { return ::createFunctionCall(name, args); }
 
 
-    inline int asLogical(SEXP x)                  { return Rf_asLogical(x); }
+    inline int asLogical(SEXP x)                  { return Rf_asLogical(x);    }
+    inline int asInteger(SEXP x)                  { return Rf_asInteger(x);    }
+    inline double asNumeric(SEXP x)               { return Rf_asReal(x);       }
+    inline const char* asCharacter(SEXP x)        { return CHAR(Rf_asChar(x)); }
+
 }
 
 #endif
