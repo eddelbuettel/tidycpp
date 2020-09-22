@@ -67,6 +67,7 @@ namespace R {                   // we remain all tidied up in a namespace
     inline SEXP ScalarReal(double d)        { return Rf_ScalarReal(d);    }
     inline SEXP ScalarString(SEXP s)        { return Rf_ScalarString(s);  }
 
+    inline SEXP allocMatrix(SEXPTYPE s, int n, int m) { return Rf_allocMatrix(s, n, m); }
 }
 
 #endif
