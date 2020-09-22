@@ -57,15 +57,15 @@ namespace R {                   // we remain all tidied up in a namespace
     inline SEXP allocString(R_xlen_t n)          { return NEW_CHARACTER(n);           }
     inline SEXP allocVectorRaw(R_xlen_t n)       { return Rf_allocVector(RAWSXP, n);  }
 
-    inline int*      ptrLogical(SEXP x)   { return LOGICAL(x);    }
-    inline int*      ptrInteger(SEXP x)   { return INTEGER(x);    }
-    inline double*   ptrNumeric(SEXP x)   { return REAL(x);       }
-    inline SEXP*     ptrCharacter(SEXP x) { return STRING_PTR(x); }
-    inline Rcomplex* ptrComplex(SEXP x)   { return COMPLEX(x);    }
-    inline SEXP*     ptrList(SEXP x)      { return VECTOR_PTR(x); }  // need USE_RINTERNALS
-    inline Rbyte*    ptrRaw(SEXP x)       { return RAW(x);        }
+    inline int*      logicalPointer(SEXP x)   { return LOGICAL(x);    }
+    inline int*      integerPointer(SEXP x)   { return INTEGER(x);    }
+    inline double*   numericPointer(SEXP x)   { return REAL(x);       }
+    inline SEXP*     stringPointer(SEXP x)    { return STRING_PTR(x); }
+    inline Rcomplex* complexPointr(SEXP x)    { return COMPLEX(x);    }
+    inline SEXP*     listPointer(SEXP x)      { return VECTOR_PTR(x); }  // need USE_RINTERNALS
+    inline Rbyte*    rawPointr(SEXP x)        { return RAW(x);        }
 
-    inline const char*  ptrChar(SEXP x)   { return CHAR(x);       }
+    inline const char*  charPointer(SEXP x)   { return CHAR(x);       }
 
     inline void  setVectorElements(SEXP x, R_xlen_t i, SEXP val) { SET_VECTOR_ELT(x, i, val); }
 
