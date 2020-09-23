@@ -42,8 +42,8 @@ SEXP out(SEXP x, SEXP y)
     }
 
     SEXP dimnames = R::Shield(R::allocVectorList(2));
-    R::setVectorElements(dimnames, 0, R::getNames(x));
-    R::setVectorElements(dimnames, 1, R::getNames(y));
+    R::setVectorElement(dimnames, 0, R::getNames(x));
+    R::setVectorElement(dimnames, 1, R::getNames(y));
     R::setDimNames(ans, dimnames);
     return ans;
 }
