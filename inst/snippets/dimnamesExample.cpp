@@ -32,7 +32,7 @@
 SEXP out(SEXP x, SEXP y)
 {
     int nx = R::length(x), ny = R::length(y);
-    SEXP ans = R::Shield( R::allocMatrix(REALSXP, nx, ny) );
+    SEXP ans = R::Shield( R::allocMatrixReal(nx, ny) );
     double *rx = R::numericPointer(x), *ry = R::numericPointer(y), *rans = R::numericPointer(ans);
 
     for(int i = 0; i < nx; i++) {
