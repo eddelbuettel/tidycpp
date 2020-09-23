@@ -60,14 +60,19 @@ namespace R {                   // we remain all tidied up in a namespace
 
     inline SEXP stringElement(SEXP x, R_xlen_t i) { return STRING_ELT(x, i); }
 
-    inline SEXP ScalarComplex(Rcomplex s)   { return Rf_ScalarComplex(s); }
-    inline SEXP ScalarInteger(int x)        { return Rf_ScalarInteger(x); }
-    inline SEXP ScalarLogical(int x)        { return Rf_ScalarLogical(x); }
-    inline SEXP ScalarRaw(Rbyte r)          { return Rf_ScalarRaw(r);     }
-    inline SEXP ScalarReal(double d)        { return Rf_ScalarReal(d);    }
-    inline SEXP ScalarString(SEXP s)        { return Rf_ScalarString(s);  }
+    inline SEXP scalarComplex(Rcomplex s)   { return Rf_ScalarComplex(s); }
+    inline SEXP scalarInteger(int x)        { return Rf_ScalarInteger(x); }
+    inline SEXP scalarLogical(int x)        { return Rf_ScalarLogical(x); }
+    inline SEXP scalarRaw(Rbyte r)          { return Rf_ScalarRaw(r);     }
+    inline SEXP scalarReal(double d)        { return Rf_ScalarReal(d);    }
+    inline SEXP scalarString(SEXP s)        { return Rf_ScalarString(s);  }
 
-    inline SEXP allocMatrix(SEXPTYPE s, int n, int m) { return Rf_allocMatrix(s, n, m); }
+    inline SEXP allocMatrix(SEXPTYPE s, int n, int m) { return Rf_allocMatrix(s, n, m);       }
+    inline SEXP allocMatrixLogical(int n, int m)      { return Rf_allocMatrix(LGLSXP, n, m);  }
+    inline SEXP allocMatrixInteger(int n, int m)      { return Rf_allocMatrix(INTSXP, n, m);  }
+    inline SEXP allocMatrixReal(int n, int m)         { return Rf_allocMatrix(REALSXP, n, m); }
+    inline SEXP allocMatrixCharacter(int n, int m)    { return Rf_allocMatrix(STRSXP, n, m);  }
+    inline SEXP allocMatrixComplex(int n, int m)      { return Rf_allocMatrix(CPLXSXP, n, m); }
 }
 
 #endif
