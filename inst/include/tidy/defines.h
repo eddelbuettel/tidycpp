@@ -65,6 +65,15 @@ namespace R {                   // we remain all tidied up in a namespace
     inline SEXP*     listPointer(SEXP x)      { return VECTOR_PTR(x); }  // need USE_RINTERNALS
     inline Rbyte*    rawPointer(SEXP x)       { return RAW(x);        }
 
+    // // maybe allow alternate short forms ?
+    // inline int*      lgclPtr(SEXP x)     { return LOGICAL(x);    }
+    // inline int*      intPtr(SEXP x)      { return INTEGER(x);    }
+    // inline double*   numPtr(SEXP x)      { return REAL(x);       }
+    // inline SEXP*     strPtr(SEXP x)      { return STRING_PTR(x); }
+    // inline Rcomplex* cplxPointr(SEXP x)  { return COMPLEX(x);    }
+    // inline SEXP*     listPointer(SEXP x) { return VECTOR_PTR(x); }  // need USE_RINTERNALS
+    // inline Rbyte*    rawPtr(SEXP x)      { return RAW(x);        }
+
     inline const char*  charPointer(SEXP x)   { return CHAR(x);       }
 
     inline void  setVectorElement(SEXP x, R_xlen_t i, SEXP val) { SET_VECTOR_ELT(x, i, val); }
