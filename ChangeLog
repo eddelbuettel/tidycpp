@@ -1,0 +1,38 @@
+2020-09-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/motivation.Rmd: Small edits
+	* man/tidyCpp-package.Rd: Idem
+
+2020-09-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/motivation.Rmd: Second example
+	* inst/include/tidy/defines.h: Possible alternates
+
+2020-09-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/defines.h: setVectorElement singular
+	* inst/snippets/dimnamesExamples.cpp: Idem
+
+	* vignettes/motivation.Rmd: First draft of vignette
+
+	* .github/workflows/R-CMD-check.yaml: Add GHA CI
+
+2020-09-22  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/defines.h: Remaming some defs
+	* inst/include/tidy/internals.h: Add allocMatrix*, some renaming
+	* inst/snippets/dimnamesExamples.cpp: New example
+	* inst/snippets/convolveExample.cpp: Idem
+
+2020-09-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/defines.h: Additional definitions
+	* inst/include/tidy/internals.h: Idem
+
+2020-08-31  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/*: Snapshot with updates
+
+2020-08-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	*  Initial version

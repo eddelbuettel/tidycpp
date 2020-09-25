@@ -49,7 +49,7 @@ simply to facilitate integration into R.  No Rcpp header or data structures are 
 on its logic in getting C or C++ source into R.
 
 :::::: {.columns}
-::: {.column width="49.5%"}
+::: {.column width="49.75%"}
 
 #### Using the C API for R
 
@@ -87,11 +87,10 @@ SEXP out(SEXP x, SEXP y)
 ```
 
 :::
-::: {.column width="1%"}
-\
-<!-- an empty Div (with a white space), serving as a column separator -->
+::: {.column width="0.5%"}
+&nbsp;
 :::
-::: {.column width="49.5%"}
+::: {.column width="49.75%"}
 
 #### Using tidyCpp
 
@@ -162,7 +161,7 @@ example ever so slight by ensuring (as is frequently done) remapping of symbols,
 header or data structures are used; we simply rely on its logic in getting C or C++ source into R.
 
 :::::: {.columns}
-::: {.column width="49.5%"}
+::: {.column width="49.75%"}
 
 #### Using the C API for R
 
@@ -198,11 +197,10 @@ SEXP convolve2(SEXP a, SEXP b)
 ```
 
 :::
-::: {.column width="1%"}
-\
-<!-- an empty Div (with a white space), serving as a column separator -->
+::: {.column width="0.5%"}
+&nbsp;
 :::
-::: {.column width="49.5%"}
+::: {.column width="49.75%"}
 
 #### Using tidyCpp
 
@@ -241,3 +239,18 @@ SEXP convolve2(SEXP a, SEXP b)
 
 Like the previous example, the new version operates without macros, does not require manual counting
 in `PROTECT` and `UNPROTECT` and is, to our eyes, a little more readable.
+
+
+### Discussion
+
+`tidyCpp` provides a cleaner layer on top of the C API for R. That has its advantages: we find it
+more readable. It conceivably has possible disadvantages. Those familiar with the C API for R may
+not need this, and may find it an unnecessary new dialect. Time will tell if new adoption and use
+may outway possible hesitation by other.  In the meantime, the package "does no harm", has no
+further dependencies and can be used, or dropped, at will
+
+
+### Summary
+
+The `tidyCpp` package provides a cleaner simplifying layer on top of the time-tested but somewhat
+crusty C API for R.

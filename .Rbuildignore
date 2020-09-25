@@ -1,5 +1,6 @@
 ^.git$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-.*\.tar\.gz$
-.editorconfig$
+^.*\.tar\.gz$
+^.editorconfig$
+^.github$
