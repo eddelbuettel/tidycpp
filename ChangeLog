@@ -1,3 +1,8 @@
+2020-09-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/tidycpp-motivation.Rnw: New pdf wrapper vignette
+	* vignettes/rmd/motivation.Rmd: Pdf version of vignette
+
 2020-09-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* vignettes/motivation.Rmd: Small edits
@@ -15,7 +20,7 @@
 
 	* vignettes/motivation.Rmd: First draft of vignette
 
-	* .github/workflows/R-CMD-check.yaml: Add GHA CI
+	* .github/workflows/R-CMD-check.yaml: Add GitHub Actions CI
 
 2020-09-22  Dirk Eddelbuettel  <edd@debian.org>
 

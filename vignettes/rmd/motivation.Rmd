@@ -1,24 +1,46 @@
 ---
-title: "tidyCpp Motivation"
-author: "Dirk Eddelbuettel"
-date: "Initial (draft) version dated September 2020"
+title: tidyCpp Motivation
+
+author:
+  - name: Dirk Eddelbuettel
+    affiliation: 1
+address:
+  - code: 1
+    address: Department of Statistics, University of Illinois, Urbana-Champaign, IL, USA
+
+doi: "https://cran.r-project.org/package=tidyCpp"
+
+fontsize: 9pt
+
+one_column: true
+
+footer_contents: "tidyCpp Motivation Vignette"
+
+abstract: |
+  The `tidyCpp` package is introduced with two motivating examples
+  contrasting code using the standard C API for R alongside with code using
+  `tidyCpp` to provide shorter and, to our eyes, cleaner and more readable
+  code. In one word: tidier.
+
+# Produce a pinp document
 output:
-  minidown::mini_document:
-    framework: water
-    code_folding:
-      source: show
-      output: show
-      message: hide
-      warning: hide
-      error: hide
+  pinp::pinp:
+    collapse: true
+    keep_tex: false
+
+date_subtitle: "Initial (draft) version dated September 2020"
+
 vignette: >
   %\VignetteIndexEntry{tidyCpp Motivation}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignettePackage{tidyCpp}
+  %\VignetteEncoding{UTF-8}
   \usepackage[utf8]{inputenc}
 ---
 
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(cache=FALSE)
 ```
 
 ## Introducing tidyCpp
@@ -28,7 +50,7 @@ highlights a few usage examples, often taken from the [_Writing R Extensions_ vi
 with R](https://cran.r-project.org/doc/manuals/r-release/R-exts.html), to highlight some features.
 
 `tidyCpp` has no further dependencies on any other package.  It can however be used with
-[Rcpp](https://wwww.rcpp.org) simply to take advantage of its helper functions `cppFunction()` or
+[Rcpp](https://www.rcpp.org) simply to take advantage of its helper functions `cppFunction()` or
 `sourceCpp()`.
 
 `tidyCpp` is still a fairly young and small package.  Please free to contribute by make suggestions,
@@ -49,7 +71,7 @@ simply to facilitate integration into R.  No Rcpp header or data structures are 
 on its logic in getting C or C++ source into R.
 
 :::::: {.columns}
-::: {.column width="49.75%"}
+::: {.column data-latex="{0.4975\textwidth}"}
 
 #### Using the C API for R
 
@@ -87,10 +109,10 @@ SEXP out(SEXP x, SEXP y)
 ```
 
 :::
-::: {.column width="0.5%"}
-&nbsp;
+::: {.column data-latex="{0.005\textwidth}"}
+\phantom{X}
 :::
-::: {.column width="49.75%"}
+::: {.column data-latex="{0.4975\textwidth}"}
 
 #### Using tidyCpp
 
@@ -138,7 +160,7 @@ Some key differences:
 - types are made explicit in the name of the called function sequence rather than enum;
 - consistent naming that aligns with language convention:
     - _types_ such as `Shield` are capitalized, and
-    - _verbs_ such as the allocators or converters are snakeCase;
+    - _verbs_ such as the allocators or converters are camelCase;
 - overall less wordy and shorter, _e.g._, `R::getNames(x)` instead of `Rf_getAttrib(x, R_NamesSymbol)`;
 - no macros are being used.
 
@@ -160,8 +182,9 @@ example ever so slight by ensuring (as is frequently done) remapping of symbols,
 `export` tag for `Rcpp` simply to facilitate integration into R, and changing whitespace.  No Rcpp
 header or data structures are used; we simply rely on its logic in getting C or C++ source into R.
 
+
 :::::: {.columns}
-::: {.column width="49.75%"}
+::: {.column data-latex="{0.4975\textwidth}"}
 
 #### Using the C API for R
 
@@ -197,10 +220,10 @@ SEXP convolve2(SEXP a, SEXP b)
 ```
 
 :::
-::: {.column width="0.5%"}
-&nbsp;
+::: {.column data-latex="{0.005\textwidth}"}
+\phantom{X}
 :::
-::: {.column width="49.75%"}
+::: {.column data-latex="{0.4975\textwidth}"}
 
 #### Using tidyCpp
 
