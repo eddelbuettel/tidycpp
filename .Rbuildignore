@@ -4,4 +4,4 @@
 ^.*\.tar\.gz$
 ^.editorconfig$
 ^.github$
-vignettes/rmd/html_v1
+vignettes/rmd

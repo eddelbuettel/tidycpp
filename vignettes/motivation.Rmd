@@ -1,7 +1,7 @@
 ---
 title: "tidyCpp Motivation"
 author: "Dirk Eddelbuettel"
-date: "Initial (draft) version dated September 2020"
+date: "Initial (draft) version dated October 2020"
 output:
   minidown::mini_document:
     framework: water
@@ -62,8 +62,8 @@ on its logic in getting C or C++ source into R.
 SEXP out(SEXP x, SEXP y)
 {
   int nx = Rf_length(x), ny = Rf_length(y);
-  SEXP ans = PROTECT(Rf_allocMatrix(REALSXP,
-                                    nx, ny));
+  SEXP ans =
+    PROTECT(Rf_allocMatrix(REALSXP, nx, ny));
   double *rx = REAL(x),
     *ry = REAL(y),
     *rans = REAL(ans);
@@ -74,7 +74,8 @@ SEXP out(SEXP x, SEXP y)
       rans[i + nx*j] = tmp * ry[j];
   }
 
-  SEXP dimnames = PROTECT(Rf_allocVector(VECSXP,2));
+  SEXP dimnames =
+    PROTECT(Rf_allocVector(VECSXP, 2));
   SET_VECTOR_ELT(dimnames, 0,
                  Rf_getAttrib(x, R_NamesSymbol));
   SET_VECTOR_ELT(dimnames, 1,
@@ -104,8 +105,8 @@ SEXP out(SEXP x, SEXP y)
 SEXP out(SEXP x, SEXP y)
 {
   int nx = R::length(x), ny = R::length(y);
-  SEXP ans = R::Shield(R::allocMatrixReal(nx, ny));
-
+  SEXP ans =
+    R::Shield(R::allocMatrixReal(nx, ny));
   double *rx = R::numericPointer(x),
     *ry = R::numericPointer(y),
     *rans = R::numericPointer(ans);
@@ -116,11 +117,12 @@ SEXP out(SEXP x, SEXP y)
       rans[i + nx*j] = tmp * ry[j];
   }
 
-  SEXP dimnames = R::Shield(R::allocVectorList(2));
-  R::setVectorElement(dimnames, 0, R::getNames(x));
-
-  R::setVectorElement(dimnames, 1, R::getNames(y));
-
+  SEXP dimnames =
+    R::Shield(R::allocVectorList(2));
+  R::setVectorElement(dimnames, 0,
+                      R::getNames(x));
+  R::setVectorElement(dimnames, 1,
+                      R::getNames(y));
   R::setDimNames(ans, dimnames);
 
   return ans;
@@ -239,6 +241,9 @@ SEXP convolve2(SEXP a, SEXP b)
 
 Like the previous example, the new version operates without macros, does not require manual counting
 in `PROTECT` and `UNPROTECT` and is, to our eyes, a little more readable.
+
+(And as above, the two 'tags' for Rcpp use are present only to facilitate use
+via the `Rcpp::sourceCpp()` package.)
 
 
 ### Discussion

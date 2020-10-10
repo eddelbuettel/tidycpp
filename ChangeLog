@@ -1,3 +1,7 @@
+2020-09-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.1
+
 2020-09-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* vignettes/tidycpp-motivation.Rnw: New pdf wrapper vignette

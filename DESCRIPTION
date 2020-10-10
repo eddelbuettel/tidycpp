@@ -2,11 +2,14 @@ Package: tidyCpp
 Type: Package
 Title: Tidy C++ Header-Only Definitions for Parts of the C API of R
 Version: 0.0.1
-Date: 2020-09-27
-Author: Dirk Eddelbuettel
-Maintainer: Dirk Eddelbuettel <edd@debian.org>
+Date: 2020-10-04
+Authors@R: c(
+ person("Dirk", "Eddelbuettel", role = c("aut", "cre", "cph"), email = "edd@debian.org"),
+ person("Romain", "Francois", role = c("ctb", "cph"), comment="Via included file Shield.h"),
+ person("Kevin", "Ushey", role = c("ctb", "cph"), comment="Via included file Shield.h"))
 Description: Core parts of the C API of R are wrapped in a C++ namespace via a set
  of inline functions giving a tidier representation of the underlying data structures
  and functionality using a header-only implementation without additional dependencies.
-Suggests: Rcpp
+Suggests: Rcpp, knitr, rmarkdown, minidown
+VignetteBuilder: knitr
 License: GPL (>= 2)
