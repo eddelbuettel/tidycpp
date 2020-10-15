@@ -31,6 +31,22 @@ namespace R {                   // we remain all tidied up in a namespace
 
     typedef struct SEXPREC *sexp; 		// R::sexp instead of SEXP
 
+    // the following is from the 'internal use only' section
+    inline SEXP Attrib(SEXP x)               { return (ATTRIB(x));           }
+    inline unsigned int Object(SEXP x)       { return (OBJECT(x));           }
+    inline unsigned int Mark(SEXP x)         { return (MARK(x));             }
+    inline unsigned int Typeof(SEXP x)       { return (TYPEOF(x));           }
+    inline unsigned int Named(SEXP x)        { return (NAMED(x));            }
+    inline unsigned int Rtrace(SEXP x)       { return (RTRACE(x));           }
+    inline unsigned int Levels(SEXP x)       { return (LEVELS(x));           }
+    inline void setObject(SEXP x, unsigned int v)     { SET_OBJECT(x, v);    }
+    inline void setTypeof(SEXP x, unsigned int v)     { SET_TYPEOF(x, v);    }
+    inline void setRtrace(SEXP x, unsigned int v)     { SET_RTRACE(x, v);    }
+    inline void setLevels(SEXP x, unsigned int v)     { SETLEVELS(x, v);     }
+    inline unsigned int Altrep(SEXP x)       { return (ALTREP(x));           }
+    //inline void setAltrep(SEXP x, unsigned int v)     { SETALTREP(x, v);     }
+    //inline void setScalar(SEXP x, unsigned int v)     { SETSCALAR(x, v);     }
+
     inline Rboolean (isNull)(SEXP s)         { return (Rf_isNull)(s);        }
     inline Rboolean (isSymbol)(SEXP s)       { return (Rf_isSymbol)(s);      }
     //inline Rboolean (isLogical)(SEXP s)      { return (Rf_isLogical)(s);     }
@@ -40,9 +56,6 @@ namespace R {                   // we remain all tidied up in a namespace
     inline Rboolean (isEnvironment)(SEXP s)  { return (Rf_isEnvironment)(s); }
     inline Rboolean (isString)(SEXP s)       { return (Rf_isString)(s);      }
     inline Rboolean (isObject)(SEXP s)       { return (Rf_isObject)(s);      }
-
-    inline void error(const char *msg)       { return Rf_error(msg);         }
-
 
 #if 0
     inline bool isSimpleScalar(SEXP x, int type) { return (IS_SCALAR(x, type) && ATTRIB(x) == R_NilValue); }
@@ -73,6 +86,28 @@ namespace R {                   // we remain all tidied up in a namespace
     inline SEXP allocMatrixReal(int n, int m)         { return Rf_allocMatrix(REALSXP, n, m); }
     inline SEXP allocMatrixCharacter(int n, int m)    { return Rf_allocMatrix(STRSXP, n, m);  }
     inline SEXP allocMatrixComplex(int n, int m)      { return Rf_allocMatrix(CPLXSXP, n, m); }
+
+
+    inline SEXP mkChar(const char *c)                         { return Rf_mkChar(c);            }
+    inline SEXP mkCharLen(const char *c, int n)               { return Rf_mkCharLen(c, n);      }
+    inline SEXP mkCharCE(const char *c, cetype_t t)           { return Rf_mkCharCE(c, t);       }
+    inline SEXP mkCharLenCE(const char *c, int n, cetype_t t) { return Rf_mkCharLenCE(c, n, t); }
+
+    inline const char * type2char(unsigned int sx)            { return Rf_type2char(sx); }
+
+    inline void setStringElement(SEXP x, R_xlen_t i, SEXP v)  {        SET_STRING_ELT(x, i, v); }
+    //inline SEXP setVectorElement(SEXP x, R_xlen_t i, SEXP v) { return SET_VECTOR_ELT(x, i, v); }
+
+
+    // cf R_ext/Error.h
+    template <typename... Args>
+    inline void error(const char *msg, Args... args)   { Rf_error(msg, args...);   }
+
+    template <typename... Args>
+    inline void warning(const char *msg, Args... args) { Rf_warning(msg, args...); }
+
+    inline void message(const char *s)                 { R_ShowMessage(s);         }
+
 }
 
 #endif
