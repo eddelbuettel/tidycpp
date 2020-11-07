@@ -13,6 +13,8 @@
 
 	* vignettes/motivation.Rmd: Updated vignette to use Protect
 
+	* inst/include/tidy/math.h: Cleaned up header, untabified, aligned
+
 2020-10-15  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version and date
