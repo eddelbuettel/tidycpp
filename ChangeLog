@@ -15,6 +15,8 @@
 
 	* inst/include/tidy/math.h: Cleaned up header, untabified, aligned
 
+	* README.md: Corrected badge link
+
 2020-10-15  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version and date
