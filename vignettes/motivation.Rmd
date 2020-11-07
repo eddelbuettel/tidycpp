@@ -106,7 +106,7 @@ SEXP out(SEXP x, SEXP y)
 {
   int nx = R::length(x), ny = R::length(y);
   SEXP ans =
-    R::Shield(R::allocMatrixReal(nx, ny));
+    R::Protect(R::allocMatrixReal(nx, ny));
   double *rx = R::numericPointer(x),
     *ry = R::numericPointer(y),
     *rans = R::numericPointer(ans);
@@ -118,7 +118,7 @@ SEXP out(SEXP x, SEXP y)
   }
 
   SEXP dimnames =
-    R::Shield(R::allocVectorList(2));
+    R::Protect(R::allocVectorList(2));
   R::setVectorElement(dimnames, 0,
                       R::getNames(x));
   R::setVectorElement(dimnames, 1,
@@ -135,11 +135,11 @@ Some key differences:
 
 - a single header `tidyCpp`: simple and clean;
 - no `PROTECT` and `UNPROTECT` with manual calling of the number of calls made: C++ takes care of
-  that for us via `Shield` which we borrowed (in a simplified form) from Rcpp;
+  that for us via `Protect` which is a modernized (and simplified) version of class `Shield` in Rcpp;
 - no `Rf_*` calls: everything used comes from a clean new namespace `R` and is easily identified;
 - types are made explicit in the name of the called function sequence rather than enum;
 - consistent naming that aligns with language convention:
-    - _types_ such as `Shield` are capitalized, and
+    - _types_ such as `Protect` are capitalized, and
     - _verbs_ such as the allocators or converters are camelCase;
 - overall less wordy and shorter, _e.g._, `R::getNames(x)` instead of `Rf_getAttrib(x, R_NamesSymbol)`;
 - no macros are being used.
@@ -219,12 +219,12 @@ SEXP convolve2(SEXP a, SEXP b)
   double *xa, *xb, *xab;
   SEXP ab;
 
-  a = R::Shield(R::coerceVectorNumeric(a));
-  b = R::Shield(R::coerceVectorNumeric(b));
+  a = R::Protect(R::coerceVectorNumeric(a));
+  b = R::Protect(R::coerceVectorNumeric(b));
   na = R::length(a);
   nb = R::length(b);
   nab = na + nb - 1;
-  ab = R::Shield(R::allocVectorNumeric(nab));
+  ab = R::Protect(R::allocVectorNumeric(nab));
   xa = R::numericPointer(a);
   xb = R::numericPointer(b);
   xab = R::numericPointer(ab);
@@ -335,7 +335,7 @@ SEXP attribute_hidden do_detect_vec(SEXP x, T fun) {
     R::error("'x' must be character vector.");
   }
   R_xlen_t n = R::xlength(x);
-  SEXP res = R::Shield(R::allocVectorCharacter(n));
+  SEXP res = R::Protect(R::allocVectorCharacter(n));
   uchardet_t handle = uchardet_new();
   for (R_len_t i = 0; i < n; ++i) {
     R::setStringElement(res, i, fun(R::stringElement(x, i), handle));
@@ -357,7 +357,7 @@ SEXP detect_raw(SEXP x) {
   if (R::Typeof(x) != RAWSXP) {
     R::error("'x' must be raw vector.");
   }
-  SEXP res = R::Shield(R::allocVectorCharacter(1));
+  SEXP res = R::Protect(R::allocVectorCharacter(1));
   uchardet_t handle = uchardet_new();
   R::setStringElement(res, 0, do_detect_sexp(x, handle));
   uchardet_delete(handle);
