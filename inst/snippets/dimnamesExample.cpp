@@ -32,7 +32,7 @@
 SEXP out(SEXP x, SEXP y)
 {
     int nx = R::length(x), ny = R::length(y);
-    SEXP ans = R::Shield( R::allocMatrixReal(nx, ny) );
+    SEXP ans = R::Protect( R::allocMatrixReal(nx, ny) );
     double *rx = R::numericPointer(x), *ry = R::numericPointer(y), *rans = R::numericPointer(ans);
 
     for(int i = 0; i < nx; i++) {
@@ -41,7 +41,7 @@ SEXP out(SEXP x, SEXP y)
             rans[i + nx*j] = tmp * ry[j];
     }
 
-    SEXP dimnames = R::Shield(R::allocVectorList(2));
+    SEXP dimnames = R::Protect(R::allocVectorList(2));
     R::setVectorElement(dimnames, 0, R::getNames(x));
     R::setVectorElement(dimnames, 1, R::getNames(y));
     R::setDimNames(ans, dimnames);

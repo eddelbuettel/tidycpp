@@ -34,10 +34,10 @@ SEXP convolve2(SEXP a, SEXP b)
     double *xa, *xb, *xab;
     SEXP ab;
 
-    a = R::Shield(R::coerceVectorNumeric(a));
-    b = R::Shield(R::coerceVectorNumeric(b));
+    a = R::Protect(R::coerceVectorNumeric(a));
+    b = R::Protect(R::coerceVectorNumeric(b));
     na = R::length(a); nb = R::length(b); nab = na + nb - 1;
-    ab = R::Shield(R::allocVectorNumeric(nab));
+    ab = R::Protect(R::allocVectorNumeric(nab));
     xa = R::numericPointer(a); xb = R::numericPointer(b); xab = R::numericPointer(ab);
     for(int i = 0; i < nab; i++) xab[i] = 0.0;
     for(int i = 0; i < na; i++)
