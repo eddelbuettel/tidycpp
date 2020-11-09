@@ -1,3 +1,9 @@
+2020-11-09  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/NEWS.Rd: Added
+
+	* DESCRIPTION: Switch to Author and Maintainer, remove Authors@R
+
 2020-11-07  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version and date
