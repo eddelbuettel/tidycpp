@@ -1,25 +1,15 @@
 ---
 title: "tidyCpp Motivation"
 author: "Dirk Eddelbuettel"
-date: "Initial (draft) version dated October 2020"
+date: "November 2020"
 output:
   minidown::mini_document:
     framework: water
-    code_folding:
-      source: show
-      output: show
-      message: hide
-      warning: hide
-      error: hide
 vignette: >
   %\VignetteIndexEntry{tidyCpp Motivation}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## Introducing tidyCpp
 
@@ -105,8 +95,8 @@ SEXP out(SEXP x, SEXP y)
 SEXP out(SEXP x, SEXP y)
 {
   int nx = R::length(x), ny = R::length(y);
-  SEXP ans =
-    R::Protect(R::allocMatrixReal(nx, ny));
+  R::Protect ans(R::allocMatrixReal(nx, ny));
+
   double *rx = R::numericPointer(x),
     *ry = R::numericPointer(y),
     *rans = R::numericPointer(ans);
@@ -117,8 +107,8 @@ SEXP out(SEXP x, SEXP y)
       rans[i + nx*j] = tmp * ry[j];
   }
 
-  SEXP dimnames =
-    R::Protect(R::allocVectorList(2));
+  R::Protect dimnames(R::allocVectorList(2));
+
   R::setVectorElement(dimnames, 0,
                       R::getNames(x));
   R::setVectorElement(dimnames, 1,
@@ -135,7 +125,8 @@ Some key differences:
 
 - a single header `tidyCpp`: simple and clean;
 - no `PROTECT` and `UNPROTECT` with manual calling of the number of calls made: C++ takes care of
-  that for us via `Protect` which is a modernized (and simplified) version of class `Shield` in Rcpp;
+  that for us via `Protect` which is a modernized (and simplified) version of
+  class `Shield` in Rcpp (and see below for more discussion of `Protect`);
 - no `Rf_*` calls: everything used comes from a clean new namespace `R` and is easily identified;
 - types are made explicit in the name of the called function sequence rather than enum;
 - consistent naming that aligns with language convention:
@@ -217,16 +208,16 @@ SEXP convolve2(SEXP a, SEXP b)
 {
   int na, nb, nab;
   double *xa, *xb, *xab;
-  SEXP ab;
 
-  a = R::Protect(R::coerceVectorNumeric(a));
-  b = R::Protect(R::coerceVectorNumeric(b));
-  na = R::length(a);
-  nb = R::length(b);
+
+  R::Protect pa(R::coerceVectorNumeric(a));
+  R::Protect pb(R::coerceVectorNumeric(b));
+  na = R::length(pa);
+  nb = R::length(pb);
   nab = na + nb - 1;
-  ab = R::Protect(R::allocVectorNumeric(nab));
-  xa = R::numericPointer(a);
-  xb = R::numericPointer(b);
+  R::Protect ab(R::allocVectorNumeric(nab));
+  xa = R::numericPointer(pa);
+  xb = R::numericPointer(pb);
   xab = R::numericPointer(ab);
   for(int i = 0; i < nab; i++)
     xab[i] = 0.0;
@@ -241,6 +232,14 @@ SEXP convolve2(SEXP a, SEXP b)
 
 Like the previous example, the new version operates without macros, does not require manual counting
 in `PROTECT` and `UNPROTECT` and is, to our eyes, a little more readable.
+
+As the existing example from [Writing R Extension, Section
+5.10.1](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Calling-_002eCall)
+used `PROTECT` on the two incoming `SEXP` objects (whereas the previous
+example, from the same source, does not) we need to allocate two tempary
+objects `pa` and `pb` with the explicit C++ ownership providing the protect
+and unprotect pairing.  Because `pa` and `pb` go out of scope at the end of
+the function, the destructor will then unprotect correctly.
 
 (And as above, the two 'tags' for Rcpp use are present only to facilitate use
 via the `Rcpp::sourceCpp()` package.)
@@ -335,7 +334,7 @@ SEXP attribute_hidden do_detect_vec(SEXP x, T fun) {
     R::error("'x' must be character vector.");
   }
   R_xlen_t n = R::xlength(x);
-  SEXP res = R::Protect(R::allocVectorCharacter(n));
+  R::Protect res(R::allocVectorCharacter(n));
   uchardet_t handle = uchardet_new();
   for (R_len_t i = 0; i < n; ++i) {
     R::setStringElement(res, i, fun(R::stringElement(x, i), handle));
@@ -357,7 +356,7 @@ SEXP detect_raw(SEXP x) {
   if (R::Typeof(x) != RAWSXP) {
     R::error("'x' must be raw vector.");
   }
-  SEXP res = R::Protect(R::allocVectorCharacter(1));
+  R::Protect res(R::allocVectorCharacter(1));
   uchardet_t handle = uchardet_new();
   R::setStringElement(res, 0, do_detect_sexp(x, handle));
   uchardet_delete(handle);

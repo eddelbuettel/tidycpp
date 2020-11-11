@@ -8,6 +8,8 @@
 	* inst/snippets/protectExamples.cpp: Ditto
 	* inst/snippets/shieldExamples.cpp: Ditto
 
+	* vignettes/motivation.Rmd: Use explicit R::Protect ownership
+
 2020-11-09  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/NEWS.Rd: Added
