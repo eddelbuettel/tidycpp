@@ -365,7 +365,68 @@ SEXP detect_raw(SEXP x) {
 
 ```
 
+### PROTECT and UNPROTECT
 
+The `R::Protect()` class ensures proper `PROTECT` wrapping for the lifetime of an object. A very
+important, yet easy-to-overlook, detail is that the form of assigning to a `SEXP` variable _looks_
+correct, but is in fact incorrect. For example in `SEXP ans = R::Protect(R::allocMatrixReal(nx,
+ny));`, the class will correctly construct around the result from `allocMatrix()`. But as it
+assigned to a `SEXP` variable, the compiler realizes that it is a temporary object and after calling
+`operator SEXP()` the destructor is called---essentially immediately.
+
+So the correct use is to write `R::Protect ans(R::allocMatrixReal(nx, ny));` which turns this into
+an instance of the the `Protect` which will live to the end of the scope and only `UNRPROTECT` via
+the destructor at the end of the scope.
+
+The example file `snippets/protectExamples.cpp` illustrates this by using
+[RcppSpdlog](https://cran.r-project.org/package=RcppSpdlog) to log invocation of the three relevant
+parts constructor, destructor and `operator SEXP()` for both the correct and incorrect form of the
+'convolution()` example. When `sourceCpp()`-ed into an R session, and skipping the first example in
+the file, we may see the following result (with of course different timestamps).
+
+```r
+R> convolveIncorrect(c(1, 2, 3), c(4, 5, 6))
+[11:25:56.418260] starting convolveIncorrect
+[11:25:56.418286] entered ctor
+[11:25:56.418288] entered SEXP()
+[11:25:56.418290] entered dtor
+[11:25:56.418291] entered ctor
+[11:25:56.418293] entered SEXP()
+[11:25:56.418295] entered dtor
+[11:25:56.418297] entered ctor
+[11:25:56.418298] entered SEXP()
+[11:25:56.418300] entered dtor
+[11:25:56.418302] ending convolveIncorrect
+[1]  4 13 28 27 18
+
+R> convolveCorrect(c(1, 2, 3), c(4, 5, 6))
+[11:25:56.418431] starting convolveCorrect
+[11:25:56.418434] entered ctor
+[11:25:56.418435] entered ctor
+[11:25:56.418436] entered SEXP()
+[11:25:56.418438] entered SEXP()
+[11:25:56.418439] entered ctor
+[11:25:56.418441] entered SEXP()
+[11:25:56.418442] entered SEXP()
+[11:25:56.418444] entered SEXP()
+[11:25:56.418445] ending convolveCorrect
+[11:25:56.418447] entered SEXP()
+[11:25:56.418449] entered dtor
+[11:25:56.418450] entered dtor
+[11:25:56.418452] entered dtor
+[1]  4 13 28 27 18
+```
+
+In the first example, we see that the triplet constructor/SEXP()/destructor is called twice when the
+two vectors are coerced, and then a third time when the result vector is allocated. This shows the
+incorrect behavior: destructors essentially immediately after constructors, leaving the object
+unprotected---which is not what was intended.
+
+The second example shows the correct behavior. Two constructor calls, then two `SEXP()` calls (when
+the length are determined), another constructor followed by three `SEXP()` calls from the three
+`numericPointer()` calls---as well as a final `SEXP()` call for the return result and three
+destructors at end. This is the intended behavior of protecting the three objects during their
+lifetime.
 
 ### Discussion
 
@@ -378,5 +439,5 @@ further dependencies and can be used, or dropped, at will
 
 ### Summary
 
-The `tidyCpp` package provides a cleaner simplifying layer on top of the time-tested but somewhat
-crusty C API for R.
+The `tidyCpp` package provides a simplifying layer on top of the time-tested
+but somewhat crusty C API for R.

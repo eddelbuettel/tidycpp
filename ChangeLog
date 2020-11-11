@@ -8,7 +8,10 @@
 	* inst/snippets/protectExamples.cpp: Ditto
 	* inst/snippets/shieldExamples.cpp: Ditto
 
-	* vignettes/motivation.Rmd: Use explicit R::Protect ownership
+	* vignettes/motivation.Rmd: Use explicit R::Protect ownership, add
+	new section discussion this issue
+	* inst/snippets/protectExamples.cpp: Added correct/incorrect protect
+	use example based on convolution example
 
 2020-11-09  Dirk Eddelbuettel  <edd@debian.org>
 
