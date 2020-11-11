@@ -1,3 +1,13 @@
+2020-11-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidyCpp: No include include deprecated shield.h (as
+	protect.h also defines a compatibility typedef)
+
+	* inst/snippets/convolveExample.cpp: Use explicit R::Protect ownership
+	* inst/snippets/dimnamesExample.cpp: Ditto
+	* inst/snippets/protectExamples.cpp: Ditto
+	* inst/snippets/shieldExamples.cpp: Ditto
+
 2020-11-09  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/NEWS.Rd: Added

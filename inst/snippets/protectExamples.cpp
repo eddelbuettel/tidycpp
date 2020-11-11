@@ -20,7 +20,7 @@
 
 // [[Rcpp::export]]
 SEXP vectorExample() {
-    SEXP ab = R::Protect( R::allocVectorNumeric(2) );
+    R::Protect ab( R::allocVectorNumeric(2) );
     R::numericPointer(ab)[0] = 123.45;
     R::numericPointer(ab)[1] = 67.89;
     return ab;
