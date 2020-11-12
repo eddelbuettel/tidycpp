@@ -1,3 +1,9 @@
+2020-11-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* man/tidyCpp-package.Rd: Make example \dontrun to avoid 10s NOTE
+	* vignettes/motivation.Rmd: Revert one URL to http
+	* README.md: Make vignette URL canonical
+
 2020-11-11  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/include/tidyCpp: No include include deprecated shield.h (as
@@ -57,11 +63,6 @@
 2020-09-27  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.0.1
-
-2020-09-26  Dirk Eddelbuettel  <edd@debian.org>
-
-	* vignettes/tidycpp-motivation.Rnw: New pdf wrapper vignette
-	* vignettes/rmd/motivation.Rmd: Pdf version of vignette
 
 2020-09-25  Dirk Eddelbuettel  <edd@debian.org>
 

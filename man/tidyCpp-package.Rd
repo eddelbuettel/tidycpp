@@ -9,10 +9,12 @@
 \section{Maintainer}{\packageMaintainer{tidyCpp}}
 \keyword{package}
 \examples{
-## see the source files in the snippets/ directory of the package
-## check for (optional, only in Suggests:) Rcpp, and ensure we are
-## but not on Windows as this runs up to the ten second time limit
-if (requireNamespace("Rcpp", quietly=TRUE) && (.Platform$OS.type != "windows")) {
-    Rcpp::sourceCpp(system.file("snippets", "dimnamesExample.cpp", package="tidyCpp"))
+\dontrun{
+    ## see the source files in the snippets/ directory of the package
+    ## check for (optional, only in Suggests:) Rcpp, and also wrapped in a
+    ## dontrun as it takes 10s at CRAN (yet only 3.5 here) yielding a NOTE
+    if (requireNamespace("Rcpp", quietly=TRUE)) {
+        Rcpp::sourceCpp(system.file("snippets", "convolveExample.cpp", package="tidyCpp"))
+    }
 }
 }

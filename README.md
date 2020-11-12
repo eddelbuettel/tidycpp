@@ -81,8 +81,8 @@ code is not hiding its C heritage, we find it overall a little easier to work wi
 `UNPROTECT` and pairs.
 
 For additional examples, please see the
-[Motivation](https://cloud.r-project.org/web/packages/tidyCpp/vignettes/motivation.html) vignette
-for a longer discussion with more examples, and the files in the
+[Motivation](https://cran.r-project.org/package=tidyCpp/vignettes/motivation.html) vignette for a
+longer discussion with more examples, and the files in the
 [snippets/](https://github.com/eddelbuettel/tidycpp/tree/master/inst/snippets) directory for
 directly callable code examples.
 
