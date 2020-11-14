@@ -1,4 +1,4 @@
-# GitHub Action using r-travis from https://eddelbuettel.github.io/r-travis/
+# Run GitHub Action for R using https://eddelbuettel.github.io/r-travis/
 
 name: R-CMD-check
 
@@ -21,15 +21,16 @@ jobs:
     runs-on: ${{ matrix.config.os }}
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Download
-      run: curl -OLs https://eddelbuettel.github.io/r-travis/run.sh
-    - name: Mode
-      run: chmod 0755 run.sh
-    - name: Bootstrap
-      run: ./run.sh bootstrap
-    - name: Dependencies
-      run: ./run.sh install_all
-    - name: Test
-      run: ./run.sh run_tests
+      - name: Bootstrap
+        run: |
+          curl -OLs https://eddelbuettel.github.io/r-travis/run.sh
+          chmod 0755 run.sh
+          ./run.sh bootstrap
+
+      - name: Dependencies
+        run: ./run.sh install_all
+
+      - name: Test
+        run: ./run.sh run_tests

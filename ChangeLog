@@ -1,3 +1,8 @@
+2020-11-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .travis.yml: Added to showcase run.sh at Travis and GH Actions
+	* .github/workflows/R-CMD-check.yaml: Minor edits
+
 2020-11-12  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.0.2
