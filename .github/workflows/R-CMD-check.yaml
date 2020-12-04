@@ -1,4 +1,4 @@
-# Run GitHub Action for R using https://eddelbuettel.github.io/r-travis/
+# Run CI for R using https://eddelbuettel.github.io/r-ci/
 
 name: R-CMD-check
 
@@ -25,7 +25,7 @@ jobs:
 
       - name: Bootstrap
         run: |
-          curl -OLs https://eddelbuettel.github.io/r-travis/run.sh
+          curl -OLs https://eddelbuettel.github.io/r-ci/run.sh
           chmod 0755 run.sh
           ./run.sh bootstrap
 
