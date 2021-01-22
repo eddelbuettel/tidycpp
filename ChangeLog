@@ -1,3 +1,8 @@
+2021-01-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .github/workflows/ci.yaml: Renamed from R-CMD-check.yaml
+	* README.md: Adjust badge accordingly
+
 2020-11-14  Dirk Eddelbuettel  <edd@debian.org>
 
 	* .travis.yml: Added to showcase run.sh at Travis and GH Actions

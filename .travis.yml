@@ -1,4 +1,4 @@
-# Run Travis CI for R using https://eddelbuettel.github.io/r-travis/
+# Run CI for R using https://eddelbuettel.github.io/r-ci/
 
 language: c
 sudo: required
