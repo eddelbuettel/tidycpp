@@ -1,6 +1,6 @@
 # Run CI for R using https://eddelbuettel.github.io/r-ci/
 
-name: R-CMD-check
+name: ci
 
 on:
   push:
@@ -14,11 +14,11 @@ jobs:
   build:
     strategy:
       matrix:
-        config:
+        include:
           - {os: macOS-latest}
           - {os: ubuntu-latest}
 
-    runs-on: ${{ matrix.config.os }}
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v2
@@ -34,3 +34,7 @@ jobs:
 
       - name: Test
         run: ./run.sh run_tests
+
+      #- name: Coverage
+      #  if: ${{ matrix.os == 'ubuntu-latest' }}
+      #  run: ./run.sh coverage
