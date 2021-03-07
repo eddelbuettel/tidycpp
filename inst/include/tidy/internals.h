@@ -3,7 +3,7 @@
 //
 // internals.h: tidying some parts of Rinternals.h
 
-// Copyright (C) 2020 Dirk Eddelbuettel
+// Copyright (C) 2020 - 2021  Dirk Eddelbuettel
 //
 // This file is part of tidyCpp
 //
@@ -27,7 +27,9 @@
 
 namespace R {                   // we remain all tidied up in a namespace
 
-    SEXP Nil = R_NilValue;	    		// The nil object
+#if defined(__HAVE_NIL_OBJECT)
+    extern SEXP Nil = R_NilValue;	    // The nil object as convenience, user declared
+#endif
 
     typedef struct SEXPREC *sexp; 		// R::sexp instead of SEXP
 

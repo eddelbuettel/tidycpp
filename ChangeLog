@@ -1,5 +1,7 @@
 2021-03-07  Dirk Eddelbuettel  <edd@debian.org>
 
+	* inst/include/tidy/internals.h: Nil object define protected
+
 	* .Rbuildignore: Add .travis.yml
 
 2021-01-21  Dirk Eddelbuettel  <edd@debian.org>
