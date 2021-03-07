@@ -5,3 +5,4 @@
 ^.editorconfig$
 ^.github$
 vignettes/rmd
+^\.travis\.yml$
