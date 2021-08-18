@@ -1,3 +1,8 @@
+2021-08-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/snippets/rollminmaxExample.cpp: New snippet, taken from another
+	package which used to have a simple Rcpp function we can make simpler
+
 2021-06-01  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (URL, BugReports): Add to DESCRIPTION
