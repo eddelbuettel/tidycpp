@@ -1,4 +1,6 @@
-// motivated from another package that had used Rcpp
+// motivated from another package that had used Rcpp -- see commit 6462c5e
+// of github repo shikokuchuo/ichimoku (released under GPL-3)
+// original source included below, modified source follows
 
 #include <deque>
 #include <utility>
