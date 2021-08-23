@@ -1,3 +1,13 @@
+2021-08-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/numvec.h: Add simplest possible C++ vector class
+	* inst/include/tidyCpp: Include vector class
+
+2021-08-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/snippets/rollminmaxClass.cpp: New variant wrapping a simple
+	class around the lean and tidy numeric vector data
+
 2021-08-19  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/snippets/rollminmaxExample.cpp: Add commit and repo reference

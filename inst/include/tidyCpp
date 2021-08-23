@@ -6,3 +6,4 @@
 #include <tidy/internals.h>
 #include <tidy/math.h>
 #include <tidy/protect.h>
+#include <tidy/numvec.h>
