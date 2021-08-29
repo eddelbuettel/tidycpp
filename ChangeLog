@@ -1,3 +1,7 @@
+2021-08-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/snippets/rollminmaxClass.cpp: Remove class now in numvec.h
+
 2021-08-23  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/include/tidy/numvec.h: Add simplest possible C++ vector class
