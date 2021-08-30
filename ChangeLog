@@ -1,10 +1,11 @@
 2021-08-30  Dirk Eddelbuettel  <edd@debian.org>
 
+	* inst/include/tidy/numvec.h (class NumVec):
+
+	* vignettes/motivation.Rmd (vignette): Add new section with
+	rollMinMax, add floating table of contents
+
 	* inst/include/tidy/numvec.h: Additional comments
-
-2021-08-29  Dirk Eddelbuettel  <edd@debian.org>
-
-	* inst/include/tidy/numvec.h: Make private data element be R::Protect
 
 2021-08-24  Dirk Eddelbuettel  <edd@debian.org>
 
