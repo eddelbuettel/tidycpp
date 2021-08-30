@@ -1,3 +1,7 @@
+2021-08-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/numvec.h: Additional comments
+
 2021-08-29  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/include/tidy/numvec.h: Make private data element be R::Protect
@@ -14,7 +18,7 @@
 2021-08-21  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/snippets/rollminmaxClass.cpp: New variant wrapping a simple
-	class around the lean and tidy numeric vector data
+	class around the lean and tidy numeric vector data (later removed)
 
 2021-08-19  Dirk Eddelbuettel  <edd@debian.org>
 

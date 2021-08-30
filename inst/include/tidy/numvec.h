@@ -24,7 +24,8 @@
 // truly minimal numeric vector class providing
 //  - to/from SEXP use
 //  - allocation of vectors
-//  - indexing via x[i] on LHS and RHSll
+//  - indexing via x[i] on LHS and RHS
+// does not even do minimal testing (i.e. SEXP ctor could check type)
 //
 // Somewhat alpha quality, not widely tested, may set your hair on fire
 
@@ -38,10 +39,10 @@ namespace tidy {                // we remain all tidied up in a namespace
 
 class NumVec {
 public:
-    NumVec(SEXP s_): s(s_) {};
-    NumVec(const int n): s(R::allocVectorNumeric(n)) {};
-    NumVec(const NumVec &) = default;						// copy ctor
-    NumVec(NumVec &&) noexcept = default;					// move ctor
+    NumVec(SEXP s_): s(s_) {};                              // ctor from SEXP
+    NumVec(const int n): s(R::allocVectorNumeric(n)) {};    // ctor from size
+    NumVec(const NumVec &) = default;                       // copy ctor
+    NumVec(NumVec &&) noexcept = default;                   // move ctor
     NumVec& operator=(const NumVec &) = default;            // copy assignment
     NumVec& operator=(NumVec &&) noexcept = default;        // move assignment
     ~NumVec() noexcept = default;                           // dtor
