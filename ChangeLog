@@ -1,6 +1,6 @@
 2021-08-30  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/include/tidy/numvec.h (class NumVec):
+	* DESCRIPTION (Version, Date): Roll minor version and date
 
 	* vignettes/motivation.Rmd (vignette): Add new section with
 	rollMinMax, add floating table of contents
