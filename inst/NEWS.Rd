@@ -3,6 +3,13 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/tidycpp/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/tidycpp/issues/#1}{##1}}
 
+\section{Changes in tidyCpp version 0.0.3 (2021-03-07)}{
+  \itemize{
+    \item Switch CI use to \href{https://eddelbuettel.github.io/r-ci/}{r-ci}
+    \item Protect nil object definition
+  }
+}
+
 \section{Changes in tidyCpp version 0.0.2 (2020-11-12)}{
   \itemize{
     \item Expanded definitions in \code{internals.h} to support new example.
