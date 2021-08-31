@@ -1,10 +1,12 @@
 ---
 title: "tidyCpp Motivation"
 author: "Dirk Eddelbuettel"
-date: "November 2020"
+date: "Initial version November 2020; Updated August 2021"
 output:
   minidown::mini_document:
     framework: water
+    toc: yes
+    toc_float: true
 vignette: >
   %\VignetteIndexEntry{tidyCpp Motivation}
   %\VignetteEngine{knitr::rmarkdown}
@@ -13,16 +15,17 @@ vignette: >
 
 ## Introducing tidyCpp
 
-The `tidyCpp` package offers a simple, small and clean C++ layer over the C API offered by R. This vignette
-highlights a few usage examples, often taken from the [_Writing R Extensions_ vignette that comes
+The `tidyCpp` package offers a simple, small and clean C++ layer over the C API offered by R.
+As of version 0.0.4, it also adds a (truly minimal) numeric vector class for C++.
+This vignette highlights a few usage examples, often taken from the [_Writing R Extensions_ vignette that comes
 with R](https://cran.r-project.org/doc/manuals/r-release/R-exts.html), to highlight some features.
 
 `tidyCpp` has no further dependencies on any other package.  It can however be used with
 [Rcpp](http://www.rcpp.org) simply to take advantage of its helper functions `cppFunction()` or
 `sourceCpp()`.
 
-`tidyCpp` is still a fairly young and small package.  Please free to contribute by make suggestions,
-or sending bugfixes or extension proposals.
+`tidyCpp` is still a fairly small package.  Please free to contribute by make suggestions, or
+sending bugfixes or extension proposals.
 
 
 ### Snippet One: dimnames
@@ -365,6 +368,161 @@ SEXP detect_raw(SEXP x) {
 
 ```
 
+### Snippet Four: Rolling min and max
+
+For the fourth example, we modified a function from an older version of package
+[ichimoku](https://cran.r-project.org/package=uchardet). It implements a rolling minimum and maximum
+operator (in an earlier version of the package, see _e.g._ [for the
+file](https://github.com/shikokuchuo/ichimoku/blob/6462c5ee65642f8018bd51ae529499c705a15c95/src/windowfns.cpp).
+Its use of Rcpp is fairly standard, however the package chose to make changes based on the
+compilation time so we took a look too. The version below deploys `tidyCpp` and its new `numvec`
+header and class instead (and we tested this in a local fork of the package).
+
+To make the code fit in the dual display below, we added linebreaks on the left, and adjusted
+whitespace. Our code on the right also slightly changes the interface by simplyfing the
+implementation: without the `enum` and `struct Args` and dual callers, we add a third argument
+to determine whether we operate as min or max which saves the two extra functions at the bottom.
+We also altered whitespace away from our preferred use of four spaces; see the original function
+(also containing full copyright headers and more) [here](https://github.com/eddelbuettel/dang/blob/master/src/rollMinMax.cpp).
+
+The key point, however, is immediately apparent.  The two version are essentially identical (though
+the Rcpp version will have more type checks, exception handling, wrapper generation and all the
+other reasons why often use Rcpp).
+
+:::::: {.columns}
+::: {.column width="49.75%"}
+
+#### Using the Rcpp version
+
+```c++
+#include <deque>
+#include <utility>
+#include <Rcpp.h>
+using namespace Rcpp;
+
+// types of calculations
+enum CalcType {MIN, MAX};
+
+// function arguments for non-data
+struct Args {
+  int window;
+  CalcType ctype;
+};
+
+// calculates rolling window for {min, max}
+NumericVector roll_minmax(const NumericVector& x,
+                          Args a) {
+
+  int n  = x.length();
+  NumericVector rollx(n);
+
+  std::deque<std::pair<long double, int>> deck;
+  for (int i = 0; i < x.size(); ++i) {
+    if(a.ctype == MIN) {
+      while (!deck.empty() &&
+             deck.back().first >= x[i])
+        deck.pop_back();
+    } else {
+      while (!deck.empty() &&
+             deck.back().first <= x[i])
+        deck.pop_back();
+    }
+    deck.push_back(std::make_pair(x[i], i));
+
+    while(deck.front().second <= i - a.window)
+      deck.pop_front();
+
+    long double min = deck.front().first;
+    if (i < a.window - 1) {
+      rollx[i] = NA_REAL;
+    } else {
+      rollx[i] = min;
+    }
+  }
+  return rollx;
+}
+
+// [[Rcpp::export]]
+NumericVector maxOver(const SEXP& x,
+                      int window) {
+  Args a;
+  a.window = window;
+  a.ctype = MAX;
+  return roll_minmax(x, a);
+}
+
+// [[Rcpp::export]]
+NumericVector minOver(const SEXP& x,
+                      int window) {
+  Args a;
+  a.window = window;
+  a.ctype = MIN;
+  return roll_minmax(x, a);
+}
+```
+
+:::
+::: {.column width="0.5%"}
+&nbsp;
+:::
+::: {.column width="49.75%"}
+
+#### Using tidyCpp
+
+```c++
+#include <deque>
+#include <utility>
+#include <tidyCpp>
+
+extern "C" {
+// forward declaration
+tidy::NumVec rollMinMax(tidy::NumVec x,
+                        int window, bool isMin);
+// this SEXP variant is referenced from init.c
+SEXP _rollMinMax(SEXP x,SEXP window,SEXP isMin) {
+  return rollMinMax(x, R::asInteger(window),
+                    R::asLogical(isMin)));
+}
+
+// Calculates rolling window for {min, max}
+tidy::NumVec rollMinMax(tidy::NumVec x,
+                        int window, bool isMin) {
+
+  int n  = R::length(x);
+  tidy::NumVec rollx(n);
+
+  std::deque<std::pair<long double, int>> deck;
+  for (int i = 0; i < n; ++i) {
+    if (isMin) {
+      while (!deck.empty() &&
+             deck.back().first >= x[i])
+        deck.pop_back();
+    } else {
+      while (!deck.empty() &&
+             deck.back().first <= x[i])
+        deck.pop_back();
+    }
+    deck.push_back(std::make_pair(x[i], i));
+
+    while(deck.front().second <= i - window)
+      deck.pop_front();
+
+    long double min = deck.front().first;
+    if (i < window - 1) {
+      rollx[i] = NA_REAL;
+    } else {
+      rollx[i] = min;
+    }
+  }
+  return rollx;
+}
+
+} // extern "C"
+```
+
+:::
+::::::
+
 ### PROTECT and UNPROTECT
 
 The `R::Protect()` class ensures proper `PROTECT` wrapping for the lifetime of an object. A very
@@ -430,14 +588,15 @@ lifetime.
 
 ### Discussion
 
-`tidyCpp` provides a cleaner layer on top of the C API for R. That has its advantages: we find it
-more readable. It conceivably has possible disadvantages. Those familiar with the C API for R may
-not need this, and may find it an unnecessary new dialect. Time will tell if new adoption and use
-may outway possible hesitation by other.  In the meantime, the package "does no harm", has no
-further dependencies and can be used, or dropped, at will
+`tidyCpp` provides a cleaner layer on top of the C API for R (as well as a so-far still minimal C++
+class layer). That has its advantages: we find it more readable. It conceivably has possible
+disadvantages. Those familiar with the C API for R may not need this, and may find it an unnecessary
+new dialect. Time will tell if new adoption and use may outway possible hesitation by other.  In the
+meantime, the package "does no harm", has no further dependencies and can be used, or dropped, at
+will
 
 
 ### Summary
 
-The `tidyCpp` package provides a simplifying layer on top of the time-tested
-but somewhat crusty C API for R.
+The `tidyCpp` package provides a simplifying layer on top of the time-tested but somewhat crusty C
+API for R.
