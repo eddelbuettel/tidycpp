@@ -3,6 +3,16 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/tidycpp/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/tidycpp/issues/#1}{##1}}
 
+\section{Changes in tidyCpp version 0.0.4 (2021-09-05)}{
+  \itemize{
+    \item Minor updates to DESCRIPTION
+    \item New snippet \code{rollminmaxExample} with simple vector use
+    \item New class \code{NumVec} motivated from rolling min/max example
+    \item Expand the vignette with C++ example based on NumVec
+    \item Add a table of contents to the vignette
+  }
+}
+
 \section{Changes in tidyCpp version 0.0.3 (2021-03-07)}{
   \itemize{
     \item Switch CI use to \href{https://eddelbuettel.github.io/r-ci/}{r-ci}
