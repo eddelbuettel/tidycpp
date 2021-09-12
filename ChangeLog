@@ -1,3 +1,9 @@
+2021-09-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/protect.h (class Protect): Switch to default
+
+	* inst/include/tidy/numvec.h (class NumVec): Protect for data object
+
 2021-09-05  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.0.4

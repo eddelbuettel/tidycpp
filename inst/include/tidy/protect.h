@@ -27,29 +27,27 @@ namespace R {
 
     class Protect {
     public:
-        Protect(SEXP obj): sx_(obj) { 					// constructor from SEXP assign
+        Protect(SEXP obj): sx_(obj) {                   // constructor from SEXP assign
             if (obj != R_NilValue)                      //   incoming non-null objects
                 PROTECT(obj);                           //   are protected
         }
-        ~Protect() {            						// destructor
+        ~Protect() {                                    // destructor
             if (sx_ != R_NilValue)                      //   the protected non-null element
                 UNPROTECT(1);                           //   is unprotected at end of scope
         }
 
-        operator SEXP() const { 						// default access via SEXP operator
-            return sx_;
-        }
+        operator SEXP() const { return sx_; }           // default access via SEXP operator
 
-        Protect(const Protect&) = delete; 				// no copy constructor
-        Protect& operator=(const Protect&) = delete;    // no copy assignment operator
-        Protect(Protect&&) = delete;                    // no move constructor
-        Protect& operator=(Protect&&) = delete;         // no move copy assignment operator
+        Protect& operator=(const Protect&) = default;   // copy assignment
+        Protect(const Protect&) = default;              // copy constructor
+        Protect(Protect&& p) = default;                 // move constructor
+        Protect& operator=(Protect&&) = default;        // move copy assignment operator
 
     private:
         SEXP sx_;
     };
 
-    typedef Protect Shield;     						// cover for Rcpp::Shield in version 0.0.1
+    typedef Protect Shield;                             // cover for Rcpp::Shield in version 0.0.1
 }
 
 #endif

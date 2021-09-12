@@ -60,7 +60,7 @@ public:
     inline Proxy operator[](int i) { return Proxy(s, i); }
 
 private:
-    SEXP s;
+    R::Protect s;
 };
 
 }
