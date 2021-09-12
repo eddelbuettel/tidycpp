@@ -25,9 +25,8 @@
 //  - to/from SEXP use
 //  - allocation of vectors
 //  - indexing via x[i] on LHS and RHS
-// does not even do minimal testing (i.e. SEXP ctor could check type)
-//
-// Somewhat alpha quality, not widely tested, may set your hair on fire
+// does not any testing (i.e. SEXP ctor could check type)
+// relies on Protect class to wrap SEXP
 
 #ifndef tidyCpp_numvec_h
 #define tidyCpp_numvec_h

@@ -38,10 +38,10 @@ namespace R {
 
         operator SEXP() const { return sx_; }           // default access via SEXP operator
 
-        Protect& operator=(const Protect&) = default;   // copy assignment
         Protect(const Protect&) = default;              // copy constructor
         Protect(Protect&& p) = default;                 // move constructor
-        Protect& operator=(Protect&&) = default;        // move copy assignment operator
+        Protect& operator=(const Protect&) = default;   // copy assignment
+        Protect& operator=(Protect&&) = default;        // move assignment
 
     private:
         SEXP sx_;

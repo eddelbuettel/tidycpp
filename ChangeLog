@@ -1,6 +1,7 @@
 2021-09-11  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/include/tidy/protect.h (class Protect): Switch to default
+	* inst/include/tidy/protect.h (class Protect): Enable the default
+	copy and move assignment and constructor
 
 	* inst/include/tidy/numvec.h (class NumVec): Protect for data object
 
