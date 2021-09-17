@@ -3,6 +3,14 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/tidycpp/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/tidycpp/issues/#1}{##1}}
 
+\section{Changes in tidyCpp version 0.0.5 (2021-09-16)}{
+  \itemize{
+    \item The \code{Protect} class uses default copy and move assignments
+    and constructors
+    \item The data object in \code{NumVec} is now a \code{Protect} object
+  }
+}
+
 \section{Changes in tidyCpp version 0.0.4 (2021-09-05)}{
   \itemize{
     \item Minor updates to DESCRIPTION
