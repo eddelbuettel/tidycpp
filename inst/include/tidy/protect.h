@@ -3,7 +3,7 @@
 //
 // protect.h: a simple wrapper for PROTECT / UNPROTECT
 
-// Copyright (C) 2020 Dirk Eddelbuettel
+// Copyright (C) 2020 - 2021  Dirk Eddelbuettel
 //
 // This file is part of tidyCpp
 //
@@ -32,8 +32,10 @@ namespace R {
                 PROTECT(obj);                           //   are protected
         }
         ~Protect() {                                    // destructor
-            if (sx_ != R_NilValue)                      //   the protected non-null element
+            if (sx_ != R_NilValue) {                    //   the protected non-null element
+                sx_ = R_NilValue;                       //   mark as nil
                 UNPROTECT(1);                           //   is unprotected at end of scope
+            }
         }
 
         operator SEXP() const { return sx_; }           // default access via SEXP operator
