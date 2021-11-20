@@ -6,6 +6,7 @@
 \section{Changes in tidyCpp version 0.0.5.1 (2021-10-26)}{
   \itemize{
     \item Assign nullptr in dtor for \code{Protect} class
+    \item Switch vignette engine to \pkg{simplermarkdown}
   }
 }
 

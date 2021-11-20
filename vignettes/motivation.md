@@ -1,16 +1,13 @@
+<!--
+%\VignetteIndexEntry{tidyCpp Motivation}
+%\VignetteEngine{simplermarkdown::mdweave_to_html}
+%\VignetteEncoding{UTF-8}
+-->
 ---
 title: "tidyCpp Motivation"
 author: "Dirk Eddelbuettel"
 date: "Initial version November 2020; Updated August 2021"
-output:
-  minidown::mini_document:
-    framework: water
-    toc: yes
-    toc_float: true
-vignette: >
-  %\VignetteIndexEntry{tidyCpp Motivation}
-  %\VignetteEngine{knitr::rmarkdown}
-  \usepackage[utf8]{inputenc}
+css: "water.css"
 ---
 
 ## Introducing tidyCpp
