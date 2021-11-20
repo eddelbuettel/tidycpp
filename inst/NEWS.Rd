@@ -3,6 +3,12 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/tidycpp/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/tidycpp/issues/#1}{##1}}
 
+\section{Changes in tidyCpp version 0.0.5.1 (2021-10-26)}{
+  \itemize{
+    \item Assign nullptr in dtor for \code{Protect} class
+  }
+}
+
 \section{Changes in tidyCpp version 0.0.5 (2021-09-16)}{
   \itemize{
     \item The \code{Protect} class uses default copy and move assignments
