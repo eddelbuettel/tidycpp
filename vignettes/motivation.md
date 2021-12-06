@@ -67,9 +67,9 @@ SEXP out(SEXP x, SEXP y)
   SEXP dimnames =
     PROTECT(Rf_allocVector(VECSXP, 2));
   SET_VECTOR_ELT(dimnames, 0,
-                 Rf_getAttrib(x, R_NamesSymbol));
+                 Rf_getAttrib(x,R_NamesSymbol));
   SET_VECTOR_ELT(dimnames, 1,
-                 Rf_getAttrib(y, R_NamesSymbol));
+                 Rf_getAttrib(y,R_NamesSymbol));
   Rf_setAttrib(ans, R_DimNamesSymbol, dimnames);
 
   UNPROTECT(2);
@@ -407,8 +407,8 @@ struct Args {
 };
 
 // calculates rolling window for {min, max}
-NumericVector roll_minmax(const NumericVector& x,
-                          Args a) {
+NumericVector
+roll_minmax(const NumericVector& x, Args a) {
 
   int n  = x.length();
   NumericVector rollx(n);
@@ -476,14 +476,14 @@ extern "C" {
 tidy::NumVec rollMinMax(tidy::NumVec x,
                         int window, bool isMin);
 // this SEXP variant is referenced from init.c
-SEXP _rollMinMax(SEXP x,SEXP window,SEXP isMin) {
-  return rollMinMax(x, R::asInteger(window),
+SEXP _rollMinMax(SEXP x, SEXP win, SEXP isMin){
+  return rollMinMax(x, R::asInteger(win),
                     R::asLogical(isMin)));
 }
 
 // Calculates rolling window for {min, max}
-tidy::NumVec rollMinMax(tidy::NumVec x,
-                        int window, bool isMin) {
+tidy::NumVec
+rollMinMax(tidy::NumVec x, int win, bool isMin){
 
   int n  = R::length(x);
   tidy::NumVec rollx(n);
@@ -501,11 +501,11 @@ tidy::NumVec rollMinMax(tidy::NumVec x,
     }
     deck.push_back(std::make_pair(x[i], i));
 
-    while(deck.front().second <= i - window)
+    while(deck.front().second <= i - win)
       deck.pop_front();
 
     long double min = deck.front().first;
-    if (i < window - 1) {
+    if (i < win - 1) {
       rollx[i] = NA_REAL;
     } else {
       rollx[i] = min;
