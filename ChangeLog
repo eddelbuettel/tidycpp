@@ -1,3 +1,7 @@
+2022-05-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/snippets/createMatrix.cpp: Example of (numeric) matrix creator
+
 2021-12-06  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.0.6
