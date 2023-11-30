@@ -1,5 +1,8 @@
 2023-11-30  Dirk Eddelbuettel  <edd@debian.org>
 
+	* inst/include/tidy/internals.h: Accomodate -Wformat
+	-Wformat-security warnings under R-devel by adding format string
+
 	* tests/version.R: Add a test for consistent inst/NEWS.Rd versioning
 
 	* .github/workflows/ci.yaml (jobs): Update to actions/checkout@v4

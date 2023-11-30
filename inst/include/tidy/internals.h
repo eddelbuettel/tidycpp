@@ -3,7 +3,7 @@
 //
 // internals.h: tidying some parts of Rinternals.h
 
-// Copyright (C) 2020 - 2021  Dirk Eddelbuettel
+// Copyright (C) 2020 - 2023  Dirk Eddelbuettel
 //
 // This file is part of tidyCpp
 //
@@ -104,9 +104,19 @@ namespace R {                   // we remain all tidied up in a namespace
     // cf R_ext/Error.h
     template <typename... Args>
     inline void error(const char *msg, Args... args)   { Rf_error(msg, args...);   }
+    // Version above tickles R-devel warning for format string, need to unroll Args... here.
+    // Can be used with
+    //   template <typename... Args>
+    //   inline void errro(const char* fmt, Args&&... args ) {
+    //     Rf_error("%s", tfm::format(fmt, std::forward<Args>(args)... ).c_str());
+    // if tinyformat headers are available (as in Rcpp)
+    // Version below is an alternative for pre-formed strings
+    inline void error(const char *msg)   			   { Rf_error("%s", msg);      }
 
     template <typename... Args>
     inline void warning(const char *msg, Args... args) { Rf_warning(msg, args...); }
+    // See error() above, same comment applies here
+    inline void warning(const char *msg)               { Rf_warning("%s", msg);    }
 
     inline void message(const char *s)                 { R_ShowMessage(s);         }
 
