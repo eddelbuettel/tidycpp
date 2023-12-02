@@ -18,7 +18,7 @@ This vignette highlights a few usage examples, often taken from the [_Writing R 
 with R](https://cran.r-project.org/doc/manuals/r-release/R-exts.html), to highlight some features.
 
 `tidyCpp` has no further dependencies on any other package.  It can however be used with
-[Rcpp](http://www.rcpp.org) simply to take advantage of its helper functions `cppFunction()` or
+[Rcpp](https://www.rcpp.org) simply to take advantage of its helper functions `cppFunction()` or
 `sourceCpp()`.
 
 `tidyCpp` is still a fairly small package.  Please free to contribute by make suggestions, or

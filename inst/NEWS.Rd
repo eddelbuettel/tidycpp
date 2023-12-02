@@ -3,6 +3,14 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/tidycpp/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/tidycpp/issues/#1}{##1}}
 
+\section{Changes in tidyCpp version 0.0.7 (2023-11-30)}{
+  \itemize{
+    \item Add an example for a numeric matrix creator
+    \item Update the continuous integration setup
+    \item Accomodate print format warnings from r-devel
+  }
+}
+
 \section{Changes in tidyCpp version 0.0.6 (2021-12-06)}{
   \itemize{
     \item Assign nullptr in dtor for \code{Protect} class
