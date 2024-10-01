@@ -13,6 +13,10 @@
 The C API of the R language and environment is robust, yet a little awkward for C++ programmers.
 This package wraps a tidy layer of header functions around it.
 
+R Core is moving towards a more explicit classification of which functions are officially part of
+the API for R, and which ones are 'experimental'.  A [very helpful contributed
+page](https://aitap.codeberg.page/R-api) summarizes the status.
+
 ### Examples
 
 A recent motivating example is from the
