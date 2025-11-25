@@ -1,4 +1,5 @@
 // motivated by a StackOverflow question
+// updated to use R::Protect in lieu of R::Shield
 
 #include <tidyCpp>
 
@@ -12,23 +13,23 @@ typedef SEXP NumMat;
 // [[Rcpp::export]]
 NumMat make_matrix(int n) {
     // allocate a numeric (square( matrix and fill it with (trivial) values
-    R::Shield mat( R::allocVectorNumeric(n*n) );
+    R::Protect mat( R::allocVectorNumeric(n*n) );
     for (auto i=0; i<n*n; i++) {
         R::numericPointer(mat)[i] = 1.0*i;
     }
 
     // allocate a dimension vector of size two and set it
     // this is what makes a matrix from a vector
-    R::Shield d( R::allocVectorInteger(2) );
+    R::Protect d( R::allocVectorInteger(2) );
     R::integerPointer(d)[0] = n;
     R::integerPointer(d)[1] = n;
     mat = setDim(mat, d);
 
     // allocate a list for column and rownames, allocate those
     // (trivially) set them
-    R::Shield lst( R::allocVectorList(2) );
-    R::Shield rown( R::allocVectorCharacter(n) );
-    R::Shield coln( R::allocVectorCharacter(n) );
+    R::Protect lst( R::allocVectorList(2) );
+    R::Protect rown( R::allocVectorCharacter(n) );
+    R::Protect coln( R::allocVectorCharacter(n) );
     for (auto i=0; i<n; i++) {
         char buf[16];
         sprintf(buf, "row%1d", i);

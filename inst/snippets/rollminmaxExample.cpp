@@ -1,6 +1,7 @@
 // motivated from another package that had used Rcpp -- see commit 6462c5e
 // of github repo shikokuchuo/ichimoku (released under GPL-3)
 // original source included below, modified source follows
+// updated to use R::Protect in lieu of R::Shield
 
 #include <deque>
 #include <utility>
@@ -24,8 +25,8 @@ typedef SEXP NumVec;
 // calculates rolling window for {minimum, maximum}
 NumVec roll_minmax(NumVec x, Args a) {
 
-    int n  = R::length(x);
-    R::Shield rollx( R::allocVectorNumeric(n) );
+    const int n  = R::length(x);
+    R::Protect rollx( R::allocVectorNumeric(n) );
 
     std::deque< std::pair<long double, int> > deck;
     for (int i = 0; i < n; ++i) {

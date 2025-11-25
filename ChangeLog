@@ -2,6 +2,12 @@
 
 	* .github/workflows/ci.yaml: Use r-ci with embedded bootstrap
 
+2025-01-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/snippets/createMatrix.cpp: Switch from Shield to Protect
+	* inst/snippets/shieldExamples.cpp: Idem
+	* rollminmaxExample.cpp: Idem
+
 2024-11-17  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Authors@R): Added
