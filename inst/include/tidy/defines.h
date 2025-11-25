@@ -3,7 +3,7 @@
 //
 // defines.h: tidying some parts of Rdefines.h
 
-// Copyright (C) 2020 Dirk Eddelbuettel
+// Copyright (C) 2020 - 2025  Dirk Eddelbuettel
 //
 // This file is part of tidyCpp
 //
@@ -54,7 +54,7 @@ namespace R {                   // we remain all tidied up in a namespace
     inline SEXP allocVectorCharacter(R_xlen_t n) { return Rf_allocVector(STRSXP, n);  }
     inline SEXP allocVectorComplex(R_xlen_t n)   { return Rf_allocVector(CPLXSXP, n); }
     inline SEXP allocVectorList(R_xlen_t n)      { return Rf_allocVector(VECSXP, n);  }
-    inline SEXP allocString(R_xlen_t n)          { return NEW_CHARACTER(n);           }
+    inline SEXP allocString(R_xlen_t n)          { return Rf_allocVector(STRSXP, n);  } // also: NEW_CHARACTER(n), NEW_STRING(n)
     inline SEXP allocVectorRaw(R_xlen_t n)       { return Rf_allocVector(RAWSXP, n);  }
 
     inline int*      logicalPointer(SEXP x)   { return LOGICAL(x);    }

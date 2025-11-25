@@ -2,6 +2,10 @@
 
 	* .github/workflows/ci.yaml: Use r-ci with embedded bootstrap
 
+2025-08-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/defines.h: Minor documentation enhancement
+
 2025-01-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/snippets/createMatrix.cpp: Switch from Shield to Protect
