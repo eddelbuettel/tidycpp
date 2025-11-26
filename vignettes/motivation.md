@@ -6,7 +6,7 @@
 ---
 title: "tidyCpp Motivation"
 author: "Dirk Eddelbuettel"
-date: "Initial version November 2020; Updated August 2021"
+date: "Initial version November 2020; Updated August 2021 and November 2025"
 css: "water.css"
 ---
 
@@ -136,7 +136,7 @@ Some key differences:
 - no macros are being used.
 
 Note that the use of `Rcpp::export` does not imply use of Rcpp data structures.  We simply take
-advantaged of the tried and true code generation to make it easy to call the example from R. You can
+advantage of the tried and true code generation to make it easy to call the example from R. You can
 copy either example into a temporary file and use `Rcpp::sourceCpp("filenameHere")` on it to run the
 example.
 
@@ -236,7 +236,7 @@ in `PROTECT` and `UNPROTECT` and is, to our eyes, a little more readable.
 As the existing example from [Writing R Extension, Section
 5.10.1](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Calling-_002eCall)
 used `PROTECT` on the two incoming `SEXP` objects (whereas the previous
-example, from the same source, does not) we need to allocate two tempary
+example, from the same source, does not) we need to allocate two temporary
 objects `pa` and `pb` with the explicit C++ ownership providing the protect
 and unprotect pairing.  Because `pa` and `pb` go out of scope at the end of
 the function, the destructor will then unprotect correctly.
@@ -382,9 +382,9 @@ to determine whether we operate as min or max which saves the two extra function
 We also altered whitespace away from our preferred use of four spaces; see the original function
 (also containing full copyright headers and more) [here](https://github.com/eddelbuettel/dang/blob/master/src/rollMinMax.cpp).
 
-The key point, however, is immediately apparent.  The two version are essentially identical (though
+The key point, however, is immediately apparent.  The two versions are essentially identical (though
 the Rcpp version will have more type checks, exception handling, wrapper generation and all the
-other reasons why often use Rcpp).
+other reasons why we often use Rcpp).
 
 :::::: {.columns}
 ::: {.column width="49.75%"}
@@ -536,7 +536,7 @@ the destructor at the end of the scope.
 The example file `snippets/protectExamples.cpp` illustrates this by using
 [RcppSpdlog](https://cran.r-project.org/package=RcppSpdlog) to log invocation of the three relevant
 parts constructor, destructor and `operator SEXP()` for both the correct and incorrect form of the
-'convolution()` example. When `sourceCpp()`-ed into an R session, and skipping the first example in
+`convolution()` example. When `sourceCpp()`-ed into an R session, and skipping the first example in
 the file, we may see the following result (with of course different timestamps).
 
 ```r
@@ -588,9 +588,9 @@ lifetime.
 `tidyCpp` provides a cleaner layer on top of the C API for R (as well as a so-far still minimal C++
 class layer). That has its advantages: we find it more readable. It conceivably has possible
 disadvantages. Those familiar with the C API for R may not need this, and may find it an unnecessary
-new dialect. Time will tell if new adoption and use may outway possible hesitation by other.  In the
+new dialect. Time will tell if new adoption and use may outweigh possible hesitation by other.  In the
 meantime, the package "does no harm", has no further dependencies and can be used, or dropped, at
-will
+will.
 
 
 ### Summary
