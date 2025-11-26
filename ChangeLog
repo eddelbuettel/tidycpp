@@ -1,3 +1,7 @@
+2025-11-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/motivation.md: Correct several typos
+
 2025-11-25  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.0.8
