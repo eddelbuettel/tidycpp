@@ -4,6 +4,7 @@
 [![CI](https://github.com/eddelbuettel/tidycpp/workflows/ci/badge.svg)](https://github.com/eddelbuettel/tidycpp/actions?query=workflow%3Aci)
 [![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.r-project.org/Licenses/GPL-2)
 [![CRAN](https://www.r-pkg.org/badges/version/tidyCpp)](https://cran.r-project.org/package=tidyCpp)
+[![r-universe](https://eddelbuettel.r-universe.dev/badges/tidyCpp)](https://eddelbuettel.r-universe.dev/tidyCpp)
 [![Dependencies](https://tinyverse.netlify.app/badge/tidyCpp)](https://cran.r-project.org/package=tidyCpp)
 [![Downloads](https://cranlogs.r-pkg.org/badges/tidyCpp?color=brightgreen)](https://www.r-pkg.org/pkg/tidyCpp)
 [![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/tidycpp)](https://github.com/eddelbuettel/tidycpp)
