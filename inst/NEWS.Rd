@@ -3,6 +3,16 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/tidycpp/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/tidycpp/issues/#1}{##1}}
 
+\section{Changes in tidyCpp version 0.0.8 (2025-11-25)}{
+  \itemize{
+    \item Updated continuous integration setup several time
+    \item Updated README.md documentation with link to R API site
+    \item Updated example snippets to use of \code{Protect}
+    \item Updated documentation in \code{defines.h} header
+    \item Updated \code{internals.h} header reflecting in R API changes
+  }
+}
+
 \section{Changes in tidyCpp version 0.0.7 (2023-11-30)}{
   \itemize{
     \item Add an example for a numeric matrix creator
