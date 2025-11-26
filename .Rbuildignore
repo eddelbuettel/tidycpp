@@ -6,3 +6,4 @@
 ^.github$
 vignettes/rmd
 ^\.travis\.yml$
+^docs
