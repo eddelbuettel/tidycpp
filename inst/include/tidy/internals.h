@@ -66,8 +66,8 @@ namespace R {                   // we remain all tidied up in a namespace
 
     inline bool maybeShared(SEXP x)     { return(MAYBE_SHARED(x));  }
     inline bool notShared(SEXP x)       { return(!maybeShared(x));  }
-    //inline bool noReferences(SEXP x)    { return(REFCNT(x) == 0);   }
-    //inline bool maybeReferenced(SEXP x) { return(!noReferences(x)); }
+    inline bool noReferences(SEXP x)    { return(NO_REFERENCES(x)); }
+    inline bool maybeReferenced(SEXP x) { return(!noReferences(x)); }
 
     inline int length(SEXP x)           { return(LENGTH(x));        }
     inline R_xlen_t xlength(SEXP x)     { return(XLENGTH(x));       }
