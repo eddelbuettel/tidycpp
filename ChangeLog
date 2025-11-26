@@ -1,5 +1,7 @@
 2025-11-26  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version, Date): Roll micro version and date
+
 	* vignettes/motivation.md: Correct several typos
 
 2025-11-25  Dirk Eddelbuettel  <edd@debian.org>
