@@ -1,3 +1,8 @@
+2025-11-28 Ivan Krylov <krylov.r00t@gmail.com>
+
+	* inst/include/tidy/internals.h: Reintroduced noReferences,
+	maybeReferenced using a different R API function
+
 2025-11-26  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll micro version and date
