@@ -10,6 +10,8 @@
     \item A badge for r-universe has been added to the README.md
     \item The vignette is now served via GitHub Pages and that version is
     referenced in the README.
+    \item Reintroduced \code{noReferences}, \code{maybeReferenced} using
+    a different R API function (\ghpr{5}).
   }
 }
 
