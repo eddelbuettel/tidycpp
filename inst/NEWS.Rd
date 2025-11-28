@@ -3,19 +3,21 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/tidycpp/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/tidycpp/issues/#1}{##1}}
 
-\section{Changes in tidyCpp version 0.0.8.1 (github-only) (2025-11-26)}{
+\section{Changes in tidyCpp version 0.0.8.1 (github-only) (2025-11-28)}{
   \itemize{
     \item Several vignette typos have been corrected (\ghpr{4} addressing
     \ghit{3})
     \item A badge for r-universe has been added to the README.md
     \item The vignette is now served via GitHub Pages and that version is
     referenced in the README.
+    \item Two entry points reintroduced and redefined using permitted R API
+    function (Ivan Krylov in \ghpr{5}).
   }
 }
 
 \section{Changes in tidyCpp version 0.0.8 (2025-11-25)}{
   \itemize{
-    \item Updated continuous integration setup several time
+    \item Updated continuous integration setup several times
     \item Updated README.md documentation with link to R API site
     \item Updated example snippets to use of \code{Protect}
     \item Updated documentation in \code{defines.h} header
