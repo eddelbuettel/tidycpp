@@ -71,7 +71,7 @@ namespace R {                   // we remain all tidied up in a namespace
 
     inline int length(SEXP x)           { return(LENGTH(x));        }
     inline R_xlen_t xlength(SEXP x)     { return(XLENGTH(x));       }
-    inline R_xlen_t truelength(SEXP x)  { return(TRUELENGTH(x));    }
+    // inline R_xlen_t truelength(SEXP x)  { return(TRUELENGTH(x));    }
 
     inline SEXP stringElement(SEXP x, R_xlen_t i) { return STRING_ELT(x, i); }
 

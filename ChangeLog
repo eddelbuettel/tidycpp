@@ -1,3 +1,8 @@
+2025-12-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/internals.h: Comment-out TRUELENGTH which will
+	disappear soon in R-devel
+
 2025-11-28  Ivan Krylov  <krylov.r00t@gmail.com>
 
 	* inst/include/tidy/internals.h: Reintroduced noReferences,
