@@ -162,7 +162,7 @@ namespace R {
     inline double dnbeta(double x, double a, double b, double ncp, int lg)         { return ::Rf_dnbeta(x, a, b, ncp, lg); }
     inline double pnbeta(double x, double a, double b, double ncp, int lt, int lg) { return ::Rf_pnbeta(x, a, b, ncp, lt, lg); }
     inline double qnbeta(double p, double a, double b, double ncp, int lt, int lg) { return ::Rf_qnbeta(p, a, b, ncp, lt, lg); }
-    inline double rnbeta(double a, double b, double np)                            { return ::Rf_rnbeta(a, b, np); }
+    //inline double rnbeta(double a, double b, double np)                            { return ::Rf_rnbeta(a, b, np); }
 
     /* Non-central F Distribution */
     inline double dnf(double x, double df1, double df2, double ncp, int lg)         { return ::Rf_dnf(x, df1, df2, ncp, lg); }

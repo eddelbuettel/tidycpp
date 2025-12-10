@@ -1,3 +1,7 @@
+2025-12-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/math.h: Do not provide access to Rf_rnbeta
+
 2025-12-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/include/tidy/internals.h: Comment-out TRUELENGTH which will
