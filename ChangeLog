@@ -1,5 +1,7 @@
 2025-12-10  Dirk Eddelbuettel  <edd@debian.org>
 
+	* DESCRIPTION (Version, Date): Roll micro version and date
+
 	* inst/include/tidy/math.h: Do not provide access to Rf_rnbeta
 
 2025-12-03  Dirk Eddelbuettel  <edd@debian.org>
