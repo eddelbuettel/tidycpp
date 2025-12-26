@@ -1,3 +1,7 @@
+2025-12-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/internals.h: No longer provide ATTRIB
+
 2025-12-10  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll micro version and date

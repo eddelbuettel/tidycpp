@@ -34,7 +34,7 @@ namespace R {                   // we remain all tidied up in a namespace
     typedef struct SEXPREC *sexp; 		// R::sexp instead of SEXP
 
     // the following is from the 'internal use only' section
-    inline SEXP Attrib(SEXP x)               { return (ATTRIB(x));           }
+    //inline SEXP Attrib(SEXP x)               { return (ATTRIB(x));           }
     inline unsigned int Object(SEXP x)       { return (OBJECT(x));           }
     //inline unsigned int Mark(SEXP x)         { return (MARK(x));             }
     inline unsigned int Typeof(SEXP x)       { return (TYPEOF(x));           }
@@ -59,10 +59,8 @@ namespace R {                   // we remain all tidied up in a namespace
     inline Rboolean (isString)(SEXP s)       { return (Rf_isString)(s);      }
     inline Rboolean (isObject)(SEXP s)       { return (Rf_isObject)(s);      }
 
-#if 0
-    inline bool isSimpleScalar(SEXP x, int type) { return (IS_SCALAR(x, type) && ATTRIB(x) == R_NilValue); }
-    inline int  simpleScalarType(SEXP x)         { return (((x)->sxpinfo.scalar && ATTRIB(x) == R_NilValue) ? TYPEOF(x) : 0); }
-#endif
+    //inline bool isSimpleScalar(SEXP x, int type) { return (IS_SCALAR(x, type) && ATTRIB(x) == R_NilValue); }
+    //inline int  simpleScalarType(SEXP x)         { return (((x)->sxpinfo.scalar && ATTRIB(x) == R_NilValue) ? TYPEOF(x) : 0); }
 
     inline bool maybeShared(SEXP x)     { return(MAYBE_SHARED(x));  }
     inline bool notShared(SEXP x)       { return(!maybeShared(x));  }
