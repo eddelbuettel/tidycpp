@@ -3,7 +3,7 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/tidycpp/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/tidycpp/issues/#1}{##1}}
 
-\section{Changes in tidyCpp version 0.0.8.2 (github-only) (2025-12-11)}{
+\section{Changes in tidyCpp version 0.0.8.3 (github-only) (2025-12-11)}{
   \itemize{
     \item Several vignette typos have been corrected (\ghpr{4} addressing
     \ghit{3})
@@ -13,6 +13,7 @@
     \item Two entry points reintroduced and redefined using permitted R API
     function (Ivan Krylov in \ghpr{5}).
     \item Another entry has been removed to match R-devel API changes.
+    \item Six new attributes helpers have been added for R 4.6.0 or later.
   }
 }
 
