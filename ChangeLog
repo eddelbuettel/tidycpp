@@ -1,7 +1,7 @@
 2025-12-30  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/include/tidy/internals.h: Define six new accessor for working
-	with attributes available in R 4.6.0 or later
+	with attributes available in R 4.6.0 or later; include Rversion.h
 
 2025-12-26  Dirk Eddelbuettel  <edd@debian.org>
 

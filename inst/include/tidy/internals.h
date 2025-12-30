@@ -24,6 +24,7 @@
 #define tidyCpp_internals_h
 
 #include <Rdefines.h>
+#include <Rversion.h>
 
 namespace R {                   // we remain all tidied up in a namespace
 
