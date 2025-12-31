@@ -1,6 +1,7 @@
 2025-12-31  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/include/tidy/internals.h (nrow,ncol): Now return R_xlen_t
+	* inst/include/tidy/internals.h (nrow,ncol): Now return R_xlen_t,
+	condition the attribute changes on R version and svn commit revision
 
 2025-12-30  Dirk Eddelbuettel  <edd@debian.org>
 

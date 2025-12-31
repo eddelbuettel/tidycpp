@@ -120,7 +120,7 @@ namespace R {                   // we remain all tidied up in a namespace
     inline void message(const char *s)                 { R_ShowMessage(s);         }
 
     // R 4.6.0 additions for attribute support
-    #if R_VERSION >= R_Version(4, 6, 0)
+    #if R_VERSION >= R_Version(4, 6, 0) && R_SVN_REVISION >= 89257
     inline SEXP getAttributes(SEXP x)                  { return R_getAttributes(x);     }
     inline R_xlen_t getAttributeCount(SEXP x)          { return R_getAttributeCount(x); }
     inline SEXP getAttributeNames(SEXP x)              { return R_getAttributeNames(x); }
