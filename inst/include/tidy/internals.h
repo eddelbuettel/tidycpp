@@ -124,7 +124,7 @@ namespace R {                   // we remain all tidied up in a namespace
     inline SEXP getAttributes(SEXP x)                  { return R_getAttributes(x);     }
     inline R_xlen_t getAttributeCount(SEXP x)          { return R_getAttributeCount(x); }
     inline SEXP getAttributeNames(SEXP x)              { return R_getAttributeNames(x); }
-    inline book hasAttrib(SEXP x, SEXP name)           { return R_hasAttrib(x);         }
+    inline bool hasAttrib(SEXP x, SEXP name)           { return R_hasAttrib(x);         }
     inline R_xlen_t nrow(SEXP x)                       { return R_nrow(x);              }
     inline R_xlen_t ncol(SEXP x)                       { return R_ncol(x);              }
     #endif
