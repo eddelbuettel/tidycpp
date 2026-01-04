@@ -122,8 +122,8 @@ namespace R {                   // we remain all tidied up in a namespace
     // R 4.6.0 additions for attribute support
     #if R_VERSION >= R_Version(4, 6, 0) && R_SVN_REVISION >= 89257
     inline SEXP getAttributes(SEXP x)                  { return R_getAttributes(x);    }
-    inline R_xlen_t getAttributeCount(SEXP x)          { return R_getAttribCount(x);   }
-    inline SEXP getAttributeNames(SEXP x)              { return R_getAttribNames(x);   }
+    inline R_xlen_t getAttribCount(SEXP x)             { return R_getAttribCount(x);   }
+    inline SEXP getAttribNames(SEXP x)                 { return R_getAttribNames(x);   }
     inline bool hasAttrib(SEXP x, SEXP name)           { return R_hasAttrib(x, name);  }
     inline R_xlen_t nrow(SEXP x)                       { return R_nrow(x);             }
     inline R_xlen_t ncol(SEXP x)                       { return R_ncol(x);             }
