@@ -1,3 +1,11 @@
+2026-01-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/internals.h: Correct two accessor
+
+2026-01-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/internals.h: Correct typo
+
 2025-12-31  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/include/tidy/internals.h (nrow,ncol): Now return R_xlen_t,
