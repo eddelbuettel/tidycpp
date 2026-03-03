@@ -1,3 +1,8 @@
+2026-03-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/tidy/defines.h: Use (const) VECTOR_PTR_RO(x) for the
+	now removed VECTOR_PTR(x)
+
 2026-01-04  Dirk Eddelbuettel  <edd@debian.org>
 
 	* inst/include/tidy/internals.h: Correct two accessor

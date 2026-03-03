@@ -14,6 +14,8 @@
     function (Ivan Krylov in \ghpr{5}).
     \item Another entry has been removed to match R-devel API changes.
     \item Six new attributes helpers have been added for R 4.6.0 or later.
+    \item \code{VECTOR_PTR_RO(x)} replaces the removed \code{VECTOR_PTR},
+    a warning or deprecation period would have been nice here.
   }
 }
 

@@ -3,7 +3,7 @@
 //
 // defines.h: tidying some parts of Rdefines.h
 
-// Copyright (C) 2020 - 2025  Dirk Eddelbuettel
+// Copyright (C) 2020-2026  Dirk Eddelbuettel
 //
 // This file is part of tidyCpp
 //
@@ -62,8 +62,10 @@ namespace R {                   // we remain all tidied up in a namespace
     inline double*   numericPointer(SEXP x)   { return REAL(x);       }
     inline SEXP*     stringPointer(SEXP x)    { return STRING_PTR(x); }
     inline Rcomplex* complexPointr(SEXP x)    { return COMPLEX(x);    }
-    inline SEXP*     listPointer(SEXP x)      { return VECTOR_PTR(x); }  // need USE_RINTERNALS
     inline Rbyte*    rawPointer(SEXP x)       { return RAW(x);        }
+
+    inline const SEXP* listPointer(SEXP x)    { return VECTOR_PTR_RO(x); }
+
 
     // // maybe allow alternate short forms ?
     // inline int*      lgclPtr(SEXP x)     { return LOGICAL(x);    }
