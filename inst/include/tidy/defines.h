@@ -24,6 +24,7 @@
 #define tidyCpp_defines_h
 
 #include <Rdefines.h>
+#include <Rversion.h>
 
 namespace R {                   // we remain all tidied up in a namespace
 
@@ -60,12 +61,16 @@ namespace R {                   // we remain all tidied up in a namespace
     inline int*      logicalPointer(SEXP x)   { return LOGICAL(x);    }
     inline int*      integerPointer(SEXP x)   { return INTEGER(x);    }
     inline double*   numericPointer(SEXP x)   { return REAL(x);       }
-    inline SEXP*     stringPointer(SEXP x)    { return STRING_PTR(x); }
     inline Rcomplex* complexPointr(SEXP x)    { return COMPLEX(x);    }
     inline Rbyte*    rawPointer(SEXP x)       { return RAW(x);        }
 
+#if R_VERSION >= R_Version(4, 5, 0)
     inline const SEXP* listPointer(SEXP x)    { return VECTOR_PTR_RO(x); }
-
+    inline const SEXP* stringPointer(SEXP x)  { return STRING_PTR_RO(x); }
+#else
+    inline       SEXP* listPointer(SEXP x)    { return VECTOR_PTR(x); }
+    inline       SEXP* stringPointer(SEXP x)  { return STRING_PTR(x); }
+#endif
 
     // // maybe allow alternate short forms ?
     // inline int*      lgclPtr(SEXP x)     { return LOGICAL(x);    }

@@ -3,6 +3,9 @@
 	* inst/include/tidy/internals.h: Hide five more accessor as
 	underlying macros have been removed from Rinternals.h
 
+	* inst/include/tidy/defines.h: Ensure VECTOR_PTR_RO and STRING_PTR_RO
+	accessors used only with R 4.5.0 or later, replace STRING_PTR
+
 2026-03-03  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.0.9
