@@ -3,7 +3,7 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/tidycpp/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/tidycpp/issues/#1}{##1}}
 
-\section{Changes in tidyCpp version 0.0.8.3 (github-only) (2025-12-11)}{
+\section{Changes in tidyCpp version 0.0.9 (2026-03-03)}{
   \itemize{
     \item Several vignette typos have been corrected (\ghpr{4} addressing
     \ghit{3})
