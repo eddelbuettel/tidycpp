@@ -3,7 +3,7 @@
 //
 // internals.h: tidying some parts of Rinternals.h
 
-// Copyright (C) 2020 - 2025  Dirk Eddelbuettel
+// Copyright (C) 2020-2026  Dirk Eddelbuettel
 //
 // This file is part of tidyCpp
 //
@@ -36,16 +36,16 @@ namespace R {                   // we remain all tidied up in a namespace
 
     // the following is from the 'internal use only' section
     //inline SEXP Attrib(SEXP x)               { return (ATTRIB(x));           }
-    inline unsigned int Object(SEXP x)       { return (OBJECT(x));           }
+    //inline unsigned int Object(SEXP x)       { return (OBJECT(x));           }
     //inline unsigned int Mark(SEXP x)         { return (MARK(x));             }
     inline unsigned int Typeof(SEXP x)       { return (TYPEOF(x));           }
-    inline unsigned int Named(SEXP x)        { return (NAMED(x));            }
+    //inline unsigned int Named(SEXP x)        { return (NAMED(x));            }
     //inline unsigned int Rtrace(SEXP x)       { return (RTRACE(x));           }
-    inline unsigned int Levels(SEXP x)       { return (LEVELS(x));           }
+    //inline unsigned int Levels(SEXP x)       { return (LEVELS(x));           }
     inline void setObject(SEXP x, unsigned int v)     { SET_OBJECT(x, v);    }
-    inline void setTypeof(SEXP x, unsigned int v)     { SET_TYPEOF(x, v);    }
+    //inline void setTypeof(SEXP x, unsigned int v)     { SET_TYPEOF(x, v);    }
     //inline void setRtrace(SEXP x, unsigned int v)     { SET_RTRACE(x, v);    }
-    inline void setLevels(SEXP x, unsigned int v)     { SETLEVELS(x, v);     }
+    //inline void setLevels(SEXP x, unsigned int v)     { SETLEVELS(x, v);     }
     inline unsigned int Altrep(SEXP x)       { return (ALTREP(x));           }
     //inline void setAltrep(SEXP x, unsigned int v)     { SETALTREP(x, v);     }
     //inline void setScalar(SEXP x, unsigned int v)     { SETSCALAR(x, v);     }
