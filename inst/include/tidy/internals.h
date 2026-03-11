@@ -34,7 +34,9 @@ namespace R {                   // we remain all tidied up in a namespace
 
     typedef struct SEXPREC *sexp; 		// R::sexp instead of SEXP
 
-    // the following is from the 'internal use only' section
+    // the following is from the 'internal use only' section;
+    // most of these are by now outlawed
+    //
     //inline SEXP Attrib(SEXP x)               { return (ATTRIB(x));           }
     //inline unsigned int Object(SEXP x)       { return (OBJECT(x));           }
     //inline unsigned int Mark(SEXP x)         { return (MARK(x));             }
@@ -42,7 +44,7 @@ namespace R {                   // we remain all tidied up in a namespace
     //inline unsigned int Named(SEXP x)        { return (NAMED(x));            }
     //inline unsigned int Rtrace(SEXP x)       { return (RTRACE(x));           }
     //inline unsigned int Levels(SEXP x)       { return (LEVELS(x));           }
-    inline void setObject(SEXP x, unsigned int v)     { SET_OBJECT(x, v);    }
+    //inline void setObject(SEXP x, unsigned int v)     { SET_OBJECT(x, v);    }
     //inline void setTypeof(SEXP x, unsigned int v)     { SET_TYPEOF(x, v);    }
     //inline void setRtrace(SEXP x, unsigned int v)     { SET_RTRACE(x, v);    }
     //inline void setLevels(SEXP x, unsigned int v)     { SETLEVELS(x, v);     }
