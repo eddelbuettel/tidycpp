@@ -7,6 +7,7 @@
   \itemize{
     \item Hide five accessors as underlying macros removed from Rinternals
     \item Preemptively hide another accessor
+    \item Ensure two updated definitions are conditional on R 4.5.0 or later
   }
 }
 
