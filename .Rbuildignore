@@ -9,4 +9,3 @@ vignettes/rmd
 ^docs
 ^actions.csv
 vignettes/update_vignette.sh
-vignettes/water.css
