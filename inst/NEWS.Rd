@@ -3,6 +3,12 @@
 \newcommand{\ghpr}{\href{https://github.com/eddelbuettel/tidycpp/pull/#1}{##1}}
 \newcommand{\ghit}{\href{https://github.com/eddelbuettel/tidycpp/issues/#1}{##1}}
 
+\section{Changes in tidyCpp version 0.0.11 (2026-03-17)}{
+  \itemize{
+    \item Keep a CSS file in the package to allow vignette build on r-oldrel too
+  }
+}
+
 \section{Changes in tidyCpp version 0.0.10 (2026-03-15)}{
   \itemize{
     \item Hide five accessors as underlying macros removed from Rinternals
